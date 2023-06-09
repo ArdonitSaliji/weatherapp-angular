@@ -10,6 +10,8 @@ import { AuthComponent } from './auth/auth.component';
 import { FooterComponent } from './footer/footer.component';
 import { ForecastDayComponent } from './forecast-day/forecast-day.component';
 import { Day10WeatherComponent } from './day10-weather/day10-weather.component';
+import { WeatherBgComponent } from './weather-bg/weather-bg.component';
+import { WeatherCityComponent } from './weather-city/weather-city.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +22,8 @@ import { Day10WeatherComponent } from './day10-weather/day10-weather.component';
     FooterComponent,
     ForecastDayComponent,
     Day10WeatherComponent,
+    WeatherBgComponent,
+    WeatherCityComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

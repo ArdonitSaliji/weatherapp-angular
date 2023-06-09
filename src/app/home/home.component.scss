@@ -1,87 +1,79 @@
 :host {
-  background: linear-gradient(180deg, #121923 0%, #2b3142 100%);
-}
-.weather-bg {
-  position: absolute;
-  top: 0;
-  background: url("/assets/weather-bg2.jpg");
-  opacity: 0.1;
-  background-size: cover;
-  width: 100%;
-  object-fit: contain;
-  height: 300px;
-  z-index: -4;
+    top: 0;
+    background: linear-gradient(180deg, #121923 0%, #2b3142 100%);
+    display: block;
+    position: relative;
 }
 
 .weather-today {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 4rem;
-  margin-bottom: 3rem;
-  color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    color: white;
 
-  .today-city {
-    font-size: xx-large;
-  }
+    .today-city {
+        font-size: xx-large;
+    }
 
-  .today-temp {
-    font-size: 5rem;
-    font-weight: 200;
-  }
+    .today-temp {
+        font-size: 5rem;
+        font-weight: 200;
+    }
 
-  .today-condition {
-    font-size: larger;
-  }
+    .today-condition {
+        font-size: larger;
+    }
 
-  .today-h-l {
-    font-size: larger;
-  }
+    .today-h-l {
+        font-size: larger;
+    }
 }
 
 .weather-featured {
-  padding: 0 2rem;
-  margin-bottom: 1.5rem;
-  color: white;
+    padding: 0 2rem;
+    padding-bottom: 1.5rem;
+    color: white;
 
-  .featured-desc {
-    margin-bottom: 1rem;
-  }
-  hr {
-    background-color: rgba(255, 255, 255, 0.5);
-    margin-bottom: 1rem;
-  }
+    .featured-desc {
+        margin-bottom: 1rem;
+    }
+    hr {
+        background-color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 1rem;
+    }
 
-  .weather-hours {
-    display: flex;
-    justify-content: space-between;
-  }
+    .weather-hours {
+        display: flex;
+        justify-content: space-between;
+    }
 
-  .weather-hour p:nth-child(1) {
-    margin-bottom: 1.5rem;
-  }
-  .weather-hour i {
-    margin-bottom: 1.5rem;
-  }
+    .weather-hour p:nth-child(1) {
+        margin-bottom: 1.5rem;
+    }
+    .weather-hour i {
+        margin-bottom: 1.5rem;
+    }
 }
 
 .weather-forecast {
-  padding: 0 2rem;
-  color: white;
-  &div:nth-child(1) {
-    margin-bottom: 0.5rem;
-  }
-  div:nth-child(1) i {
-    margin-right: 0.4rem;
-    margin-bottom: 0.3rem;
-  }
+    padding: 0 2rem;
+    color: white;
+    &div:nth-child(1) {
+        margin-bottom: 0.5rem;
+    }
+    > div:nth-child(1) i {
+        margin-right: 0.4rem;
+        margin-bottom: 0.3rem;
+    }
 
-  hr {
-    margin-bottom: 0.5rem;
-  }
+    hr {
+        margin-bottom: 0.5rem;
+    }
 
-  .forecast-days {
-    display: flex;
-    flex-direction: column;
-  }
+    .forecast-days {
+        display: flex;
+        flex-direction: column;
+    }
 }

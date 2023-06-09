@@ -1,49 +1,47 @@
-<div class="weather-bg"></div>
+<app-weather-bg></app-weather-bg>
 <div class="weather-today">
-  <h2 class="today-city">Seongnam-si</h2>
-  <h1 class="today-temp">21º</h1>
-  <h4 class="today-condition">Partly Cloudy</h4>
-  <h4 class="today-h-l">H:29º L:15º</h4>
+    <h2 class="today-city">Seongnam-si</h2>
+    <h1 class="today-temp">21º</h1>
+    <h4 class="today-condition">Partly Cloudy</h4>
+    <h4 class="today-h-l">H:29º L:15º</h4>
 </div>
 <div class="weather-featured">
-  <p class="featured-desc">
-    Cloudy conditions from 1AM-9AM, with showers expected at 9AM.
-  </p>
-  <hr />
-  <div class="weather-hours">
-    <div class="weather-hour">
-      <p>Now</p>
-      <i class="fa-solid fa-cloud-moon"></i>
-      <p class="hour-temp">21</p>
+    <p class="featured-desc">Cloudy conditions from 1AM-9AM, with showers expected at 9AM.</p>
+    <hr />
+    <div class="weather-hours">
+        <div class="weather-hour">
+            <p>Now</p>
+            <i class="fa-solid fa-cloud-moon"></i>
+            <p class="hour-temp">21</p>
+        </div>
+        <div class="weather-hour">
+            <p>10PM</p>
+            <i class="fa-solid fa-cloud-rain"></i>
+            <p class="hour-temp">22</p>
+        </div>
+        <div class="weather-hour">
+            <p>11PM</p>
+            <i class="fa-solid fa-cloud-showers-heavy"></i>
+            <p class="hour-temp">21</p>
+        </div>
+        <div class="weather-hour">
+            <p>12PM</p>
+            <i class="fa-solid fa-cloud-bolt"></i>
+            <p class="hour-temp">21</p>
+        </div>
+        <div class="weather-hour">
+            <p>1AM</p>
+            <i class="fa-solid fa-cloud-sun-rain"></i>
+            <p class="hour-temp">21</p>
+        </div>
     </div>
-    <div class="weather-hour">
-      <p>10PM</p>
-      <i class="fa-solid fa-cloud-rain"></i>
-      <p class="hour-temp">22</p>
-    </div>
-    <div class="weather-hour">
-      <p>11PM</p>
-      <i class="fa-solid fa-cloud-showers-heavy"></i>
-      <p class="hour-temp">21</p>
-    </div>
-    <div class="weather-hour">
-      <p>12PM</p>
-      <i class="fa-solid fa-cloud-bolt"></i>
-      <p class="hour-temp">21</p>
-    </div>
-    <div class="weather-hour">
-      <p>1AM</p>
-      <i class="fa-solid fa-cloud-sun-rain"></i>
-      <p class="hour-temp">21</p>
-    </div>
-  </div>
 </div>
 <div class="weather-forecast">
-  <div><i class="fa-solid fa-calendar-days"></i>10-DAY FORECAST</div>
-  <hr />
-  <div class="forecast-days">
-    <app-forecast-day></app-forecast-day>
-    <app-forecast-day></app-forecast-day>
-    <app-forecast-day></app-forecast-day>
-  </div>
+    <div><i class="fa-solid fa-calendar-days"></i>10-DAY FORECAST</div>
+    <hr />
+    <div class="forecast-days">
+        <app-forecast-day></app-forecast-day>
+        <app-forecast-day></app-forecast-day>
+        <app-forecast-day></app-forecast-day>
+    </div>
 </div>

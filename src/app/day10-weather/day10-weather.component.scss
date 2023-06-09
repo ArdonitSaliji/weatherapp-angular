@@ -1,24 +1,40 @@
 :host {
-  color: white;
-  > div:nth-child(1) {
-    padding: 0 2rem;
-  }
+    width: 100%;
+    color: white;
+    > div:nth-child(2) {
+        padding: 0 2rem;
+    }
 
-  > div:nth-child(1) h4 {
-    margin-bottom: 1rem;
-  }
+    > div:nth-child(2) h4 {
+        margin-bottom: 1rem;
+        color: #ffffff;
+        opacity: 40%;
+    }
 }
 
-.forecast-city {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
+.forecast {
+    width: 100%;
+}
+
+.forecast-wrapper {
+    border-radius: 15px;
+    padding: 15px;
+    padding-bottom: 0;
+    background-color: rgba(45, 51, 64, 1);
+
+    > div:nth-child(1) {
+        display: flex;
+        color: white;
+        opacity: 30%;
+    }
+
+    > div:nth-child(1) i {
+        margin-right: 0.5rem;
+    }
 }
 
 .forecast-days {
-  color: white;
-  display: flex;
-  flex-direction: column;
+    color: white;
+    display: flex;
+    flex-direction: column;
 }

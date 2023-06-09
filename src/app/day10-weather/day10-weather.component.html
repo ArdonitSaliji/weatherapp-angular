@@ -1,22 +1,24 @@
-<div>
-  <div class="forecast-city">
-    <h1>Seongnam-si</h1>
-    <h2>21º | Partly Cloudy</h2>
-  </div>
+<app-weather-bg></app-weather-bg>
+<div class="forecast">
+    <app-weather-city></app-weather-city>
 
-  <div>
-    <h4>10-DAY FORECAST</h4>
-    <div class="forecast-days">
-      <app-forecast-day></app-forecast-day>
-      <app-forecast-day></app-forecast-day>
-      <app-forecast-day></app-forecast-day>
-      <app-forecast-day></app-forecast-day>
-      <app-forecast-day></app-forecast-day>
-      <app-forecast-day></app-forecast-day>
-      <app-forecast-day></app-forecast-day>
-      <app-forecast-day></app-forecast-day>
-      <app-forecast-day></app-forecast-day>
-      <app-forecast-day></app-forecast-day>
+    <div class="forecast-wrapper">
+        <div>
+            <i class="fa-solid fa-calendar-days"></i>
+            <h4>10-DAY FORECAST</h4>
+        </div>
+        <div class="forecast-days">
+            <app-forecast-day></app-forecast-day>
+            <app-forecast-day></app-forecast-day>
+            <app-forecast-day></app-forecast-day>
+            <app-forecast-day></app-forecast-day>
+            <app-forecast-day></app-forecast-day>
+            <app-forecast-day></app-forecast-day>
+            <app-forecast-day></app-forecast-day>
+            <app-forecast-day></app-forecast-day>
+            <app-forecast-day></app-forecast-day>
+            <app-forecast-day></app-forecast-day>
+        </div>
     </div>
-  </div>
 </div>
+<router-outlet></router-outlet>
