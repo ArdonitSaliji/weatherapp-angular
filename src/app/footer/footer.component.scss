@@ -1,0 +1,26 @@
+.footer {
+  width: 100%;
+  border-top: 1px solid white;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  color: white;
+  padding: 0 1.5rem;
+  padding-top: 1.2rem;
+
+  > i:nth-child(1) {
+    font-size: 1.5rem;
+  }
+
+  > i:nth-child(3) {
+    font-size: 1.5rem;
+  }
+
+  div {
+    i {
+      margin: 0 0.5rem;
+    }
+  }
+}
