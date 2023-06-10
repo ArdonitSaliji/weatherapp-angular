@@ -1,6 +1,6 @@
 :host {
     display: block;
-    width: 100%;
+    position: relative;
     color: white;
     > div:nth-child(2) {
         padding: 0 2rem;
@@ -39,4 +39,18 @@
     color: white;
     display: flex;
     flex-direction: column;
+}
+
+@media screen and (min-width: 1024px) {
+    .forecast-wrapper {
+        padding: 1rem 2rem;
+
+        > div:nth-child(1) {
+            font-size: 2rem;
+        }
+
+        > div:nth-child(1) i {
+            margin: 0.5rem 1rem 1rem 1rem;
+        }
+    }
 }
