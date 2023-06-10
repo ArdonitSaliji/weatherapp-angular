@@ -1,8 +1,8 @@
 :host {
     top: 0;
     background: linear-gradient(180deg, #121923 0%, #2b3142 100%);
-    display: block;
     position: relative;
+    height: 90%;
 }
 
 .weather-today {
@@ -11,10 +11,12 @@
     align-items: center;
     padding-top: 4rem;
     padding-bottom: 3rem;
+    position: relative;
     color: white;
-
+    z-index: 3;
     .today-city {
         font-size: xx-large;
+        color: white;
     }
 
     .today-temp {
@@ -35,6 +37,7 @@
     padding: 0 2rem;
     padding-bottom: 1.5rem;
     color: white;
+    position: relative;
 
     .featured-desc {
         margin-bottom: 1rem;
@@ -60,6 +63,8 @@
 .weather-forecast {
     padding: 0 2rem;
     color: white;
+    position: relative;
+
     &div:nth-child(1) {
         margin-bottom: 0.5rem;
     }

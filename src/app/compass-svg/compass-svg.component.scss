@@ -1,0 +1,9 @@
+:host {
+    display: flex;
+    justify-content: center;
+}
+.compass-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -25%);
+}

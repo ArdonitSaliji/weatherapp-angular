@@ -1,0 +1,19 @@
+:host {
+    position: relative;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+.vector {
+    width: 100%;
+}
+.vector-ellipse {
+    top: 50%;
+    right: 17%;
+    position: absolute;
+}
+.vector-line {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    width: 100%;
+}

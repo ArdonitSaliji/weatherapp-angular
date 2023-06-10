@@ -1,4 +1,5 @@
 :host {
+    display: block;
     width: 100%;
     color: white;
     > div:nth-child(2) {
@@ -10,6 +11,7 @@
         color: #ffffff;
         opacity: 40%;
     }
+    height: 90%;
 }
 
 .forecast {

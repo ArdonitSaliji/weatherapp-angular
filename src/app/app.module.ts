@@ -12,6 +12,8 @@ import { ForecastDayComponent } from './forecast-day/forecast-day.component';
 import { Day10WeatherComponent } from './day10-weather/day10-weather.component';
 import { WeatherBgComponent } from './weather-bg/weather-bg.component';
 import { WeatherCityComponent } from './weather-city/weather-city.component';
+import { CompassSvgComponent } from './compass-svg/compass-svg.component';
+import { WeatherVectorComponent } from './weather-vector/weather-vector.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +26,8 @@ import { WeatherCityComponent } from './weather-city/weather-city.component';
     Day10WeatherComponent,
     WeatherBgComponent,
     WeatherCityComponent,
+    CompassSvgComponent,
+    WeatherVectorComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
