@@ -34,3 +34,25 @@
         }
     }
 }
+@media screen and (min-width: 1024px) {
+    :host {
+        height: 9rem;
+    }
+
+    .footer {
+        > i:nth-child(1) {
+            font-size: 3rem;
+        }
+
+        > i:nth-child(3) {
+            font-size: 3rem;
+        }
+
+        div {
+            i {
+                padding: 0 0.5rem;
+                font-size: 1.5rem;
+            }
+        }
+    }
+}

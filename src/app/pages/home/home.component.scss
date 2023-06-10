@@ -1,0 +1,169 @@
+:host {
+    top: 0;
+    background: linear-gradient(180deg, #121923 0%, #2b3142 100%);
+    position: relative;
+    height: 90%;
+}
+
+.weather-today {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    position: relative;
+    color: white;
+    z-index: 3;
+    .today-city {
+        font-size: xx-large;
+        color: white;
+    }
+
+    .today-temp {
+        font-size: 5rem;
+        font-weight: 200;
+    }
+
+    .today-condition {
+        font-size: larger;
+    }
+
+    .today-h-l {
+        font-size: larger;
+    }
+}
+
+.weather-featured {
+    margin: 0 2rem 1rem;
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    padding-bottom: 1.5rem;
+    color: white;
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+
+    .featured-desc {
+        margin-bottom: 1rem;
+    }
+    hr {
+        background-color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 1rem;
+    }
+
+    .weather-hours {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .weather-hour p:nth-child(1) {
+        margin-bottom: 1.5rem;
+    }
+    .weather-hour i {
+        margin-bottom: 1.5rem;
+    }
+}
+
+.weather-forecast {
+    margin: 0 2rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    color: white;
+    position: relative;
+
+    &div:nth-child(1) {
+        margin-bottom: 0.5rem;
+    }
+    > div:nth-child(1) i {
+        margin-right: 0.4rem;
+        margin-bottom: 0.3rem;
+    }
+
+    hr {
+        margin-bottom: 0.5rem;
+    }
+
+    .forecast-days {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+// Desktop Version
+
+@media screen and (min-width: 1024px) {
+    //
+    .weather-today {
+        .today-city {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .today-temp {
+            font-size: 6rem;
+            font-weight: 200;
+        }
+
+        .today-condition {
+            font-size: xx-large;
+        }
+
+        .today-h-l {
+            font-size: x-large;
+        }
+    }
+    //
+    .weather-featured {
+        .featured-desc {
+            font-size: 2rem;
+        }
+        hr {
+            background-color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .weather-hours {
+            display: flex;
+            justify-content: space-between;
+
+            .weather-hour {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                p {
+                    font-size: 2rem;
+                }
+                i {
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+    //
+    .weather-forecast {
+        > div:nth-child(1) {
+            display: flex;
+            margin-bottom: 0.5rem;
+            align-items: center;
+            i {
+                margin-right: 0.4rem;
+                margin-bottom: 0.3rem;
+                font-size: 2rem;
+            }
+            p {
+                font-size: 2rem;
+            }
+        }
+
+        hr {
+            margin-bottom: 0.5rem;
+        }
+
+        .forecast-days {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
