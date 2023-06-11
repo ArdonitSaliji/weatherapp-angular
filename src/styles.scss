@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 // Variables
 $cardBg: rgba(45, 51, 64, 1);
 
@@ -23,13 +27,14 @@ $cardBg: rgba(45, 51, 64, 1);
 
 body {
     background: linear-gradient(180deg, #121923 0%, #2b3142 100%);
-    height: 100vh;
+    min-height: 100vh;
+    max-height: 100%;
 }
 
 .weather-bg {
     top: 0;
     width: 100%;
-    height: 90vh;
+    height: 100%;
     opacity: 0.3;
     z-index: 1;
     position: absolute;
@@ -40,7 +45,7 @@ body {
     top: 0;
     opacity: 1;
     width: 100%;
-    height: 90vh;
+    height: 100%;
     position: absolute;
     background-image: url('/assets/weather-bg-stars.png');
     background-size: cover;

@@ -24,26 +24,12 @@
         font-weight: 400;
     }
 
-    span {
+    .temp-bar {
         position: absolute;
-        left: 55%;
-        width: 100px;
-        height: 10px;
+        top: 50%;
+        transform: translate(0, -50%);
+        left: 52%;
         border-radius: 20px;
-        background-color: rgba(0, 0, 0, 0.7);
-        .thumb {
-            width: 70%;
-            top: 1px;
-            left: 5px;
-            height: 7px;
-            background: linear-gradient(
-                90deg,
-                #96d097 0%,
-                #b5cf79 22.81%,
-                #f8d74a 54.18%,
-                #ef8835 99%
-            );
-        }
     }
 }
 
@@ -51,28 +37,26 @@
 
 @media screen and (min-width: 1024px) {
     .forecast-day {
-        margin: 1.5rem 0;
-
         i {
             left: 21%;
             position: absolute;
             margin: 0 0.5rem;
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
         h3:nth-child(1) {
-            font-size: 2rem;
+            font-size: 1rem;
         }
 
         h3:nth-child(3) {
             position: absolute;
             left: 39%;
-            font-size: 2rem;
+            font-size: 1rem;
             font-weight: 400;
         }
         h3:nth-child(5) {
             position: absolute;
             left: 90%;
-            font-size: 2rem;
+            font-size: 1rem;
             font-weight: 400;
         }
 

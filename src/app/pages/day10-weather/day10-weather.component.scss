@@ -11,7 +11,8 @@
         color: #ffffff;
         opacity: 40%;
     }
-    height: 90%;
+    min-height: 100vh;
+    max-height: 100%;
 }
 
 .forecast {
@@ -45,12 +46,8 @@
     .forecast-wrapper {
         padding: 1rem 2rem;
 
-        > div:nth-child(1) {
-            font-size: 2rem;
-        }
-
         > div:nth-child(1) i {
-            margin: 0.5rem 1rem 1rem 1rem;
+            margin-top: 0.3rem;
         }
     }
 }

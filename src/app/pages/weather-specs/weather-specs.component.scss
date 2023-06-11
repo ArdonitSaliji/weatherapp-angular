@@ -1,10 +1,13 @@
 @import '../../../styles.scss';
 :host {
-    height: 90%;
+    height: auto;
+    max-height: 100%;
+    margin-bottom: 10%;
 }
 .city {
     padding: 0 1.5rem;
-
+    height: 100%;
+    margin-bottom: 4rem;
     .city-temp {
         color: white;
         display: flex;
@@ -94,6 +97,7 @@
                     height: 7rem;
                     border-radius: 50%;
                     position: absolute;
+
                     span {
                         display: block;
                         position: absolute;
@@ -107,19 +111,22 @@
 
                     span:nth-child(2) {
                         top: 50%;
-                        right: 8%;
+                        right: 10%;
                         transform: translate(0, -50%);
                     }
+
                     span:nth-child(3) {
-                        bottom: 5%;
+                        bottom: 8%;
                         left: 50%;
                         transform: translate(-50%);
                     }
+
                     span:nth-child(4) {
                         top: 50%;
-                        left: 8%;
+                        left: 10%;
                         transform: translate(0, -50%);
                     }
+
                     > div {
                         display: flex;
                         flex-direction: column;
@@ -163,6 +170,112 @@
         gap: 10px;
         > div {
             min-width: 10rem !important;
+        }
+    }
+}
+
+// Desktop
+
+@media screen and (min-width: 1024px) {
+    :host {
+        min-height: 100vh;
+        max-height: 100%;
+        margin-bottom: 0;
+    }
+    .city {
+        padding: 0 3rem;
+
+        .city-temp {
+            border-radius: 15px;
+
+            > * {
+                opacity: 70%;
+            }
+        }
+        .city-specs {
+            gap: 15px;
+            > div {
+                height: 12rem;
+
+                h1 {
+                    font-size: 2rem;
+                }
+
+                > div:nth-child(2) {
+                    h1 {
+                        font-size: 2rem;
+                    }
+                    h4 {
+                        font-size: 1rem;
+                    }
+                }
+
+                .bar {
+                    margin-top: 1.5rem;
+                    margin-bottom: 1rem;
+                }
+
+                .compass {
+                    width: 8rem;
+                    height: 8rem;
+                    .compass-circle {
+                        display: block;
+                        width: 8rem;
+                        height: 8rem;
+                        border-radius: 50%;
+                        position: absolute;
+
+                        span {
+                            display: block;
+                            position: absolute;
+                        }
+
+                        span:nth-child(1) {
+                            top: 0;
+                            left: 50%;
+                            transform: translate(-50%);
+                        }
+
+                        span:nth-child(2) {
+                            top: 50%;
+                            right: 10%;
+                            transform: translate(0, -70%);
+                        }
+                        span:nth-child(3) {
+                            bottom: 10%;
+                            left: 50%;
+                            transform: translate(-50%);
+                        }
+                        span:nth-child(4) {
+                            top: 50%;
+                            left: 10%;
+                            transform: translate(0, -70%);
+                        }
+                        > div {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -70%);
+                        }
+                    }
+                }
+            }
+
+            .termo {
+                h1 {
+                    margin: 1.5rem 0;
+                }
+            }
+
+            .humidity {
+                h1 {
+                    margin: 1.5rem 0;
+                }
+            }
         }
     }
 }
