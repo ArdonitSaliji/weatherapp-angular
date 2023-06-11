@@ -22,7 +22,6 @@ import { FormsModule } from '@angular/forms';
         HomeComponent,
         WeatherSpecsComponent,
         WeatherLocationComponent,
-        AuthComponent,
         FooterComponent,
         ForecastDayComponent,
         Day10WeatherComponent,
