@@ -16,9 +16,10 @@ import { TempBarComponent } from './widgets/temp-bar/temp-bar.component';
 import { FormsModule } from '@angular/forms';
 import { AuthModule } from './pages/auth/auth.module';
 import { MatIconModule } from '@angular/material/icon';
-import { BarIconComponent } from './widgets/bar-icon/bar-icon.component';
 import { SearchBarComponent } from './widgets/search-bar/search-bar.component';
 import { LocationCityComponent } from './widgets/location-city/location-city.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,6 @@ import { LocationCityComponent } from './widgets/location-city/location-city.com
     CompassSvgComponent,
     WeatherVectorComponent,
     TempBarComponent,
-    BarIconComponent,
     SearchBarComponent,
     LocationCityComponent,
   ],
@@ -43,9 +43,10 @@ import { LocationCityComponent } from './widgets/location-city/location-city.com
     AppRoutingModule,
     FormsModule,
     AuthModule,
+    HttpClientModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

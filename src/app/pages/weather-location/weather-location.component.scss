@@ -5,6 +5,13 @@
   padding: 0 2rem;
   font-family: "sf-pro-display";
 
+  .bars-icon {
+    display: flex;
+    justify-content: right;
+    margin-top: 3rem;
+    width: 100%;
+  }
+
   * {
     color: white;
   }

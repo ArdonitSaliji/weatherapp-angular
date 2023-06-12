@@ -1,52 +1,52 @@
 :host {
-    position: relative;
-    margin-bottom: 0.5rem;
-    width: 100%;
+  position: relative;
+  margin-bottom: 0.5rem;
+  width: 100%;
 }
 .vector {
-    margin-top: 0.5rem;
-    width: 100%;
+  margin-top: 0.5rem;
+  width: 100%;
 }
 .vector-ellipse {
-    top: 45%;
-    right: 17%;
-    height: 12px;
-    width: 12px;
-    position: absolute;
+  top: 45%;
+  right: 17%;
+  height: 12px;
+  width: 12px;
+  position: absolute;
 }
 .vector-line {
-    position: absolute;
-    left: 0;
-    top: 40%;
-    height: 10px;
-    width: 100%;
+  position: absolute;
+  left: 0;
+  top: 40%;
+  height: 10px;
+  width: 100%;
 }
 
 @media screen and (min-width: 1024px) {
-    :host {
-        position: relative;
-        margin-bottom: 0;
-        width: 100%;
-    }
+  :host {
+    position: relative;
+    margin-bottom: 0;
+    width: 100%;
+  }
 
-    .vector {
-        width: 100%;
-        height: 3.5rem;
-    }
+  .vector {
+    width: 100%;
+    height: 2.7rem;
+  }
 
-    .vector-ellipse {
-        top: 47%;
-        right: 29%;
-        height: 15px;
-        width: 15px;
-        position: absolute;
-    }
+  .vector-ellipse {
+    top: 47%;
+    right: 29%;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+  }
 
-    .vector-line {
-        position: absolute;
-        left: 0;
-        top: 40%;
-        height: 3px;
-        width: 100%;
-    }
+  .vector-line {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    height: 3px;
+    width: 100%;
+  }
 }

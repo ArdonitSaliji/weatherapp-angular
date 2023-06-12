@@ -1,37 +1,38 @@
 :host {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  transform: translateY(-5%);
 }
 
 svg:nth-child(1) {
-    width: 7rem;
-    height: 7rem;
+  width: 7rem;
+  height: 7rem;
 }
 
 .compass-arrow {
-    width: 7rem;
-    height: 7rem;
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -48%);
+  width: 7rem;
+  height: 7rem;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -48%);
 }
 
 @media screen and (min-width: 1024px) {
-    :host {
-        display: flex;
-        justify-content: center;
+  :host {
+    display: flex;
+    justify-content: center;
 
-        svg:nth-child(1) {
-            width: 8rem;
-            height: 8rem;
-        }
-
-        .compass-arrow {
-            width: 8rem;
-            height: 8rem;
-            position: absolute;
-            top: 50%;
-            transform: translate(0, -48%);
-        }
+    svg:nth-child(1) {
+      width: 7.5rem;
+      height: 7.5rem;
     }
+
+    .compass-arrow {
+      width: 7.5rem;
+      height: 7.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -55%);
+    }
+  }
 }

@@ -1,71 +1,70 @@
 .forecast-day {
-    position: relative;
-    margin: 0.7rem 0;
-    display: flex;
-    align-items: center;
+  position: relative;
+  margin: 0.7rem 0;
+  display: flex;
+  align-items: center;
 
-    i {
-        left: 21%;
-        position: absolute;
-        margin: 0 0.5rem;
-        font-size: 1.5rem;
-    }
+  i {
+    left: 21%;
+    position: absolute;
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+  }
 
-    h3:nth-child(3) {
-        position: absolute;
-        left: 39%;
-        font-size: x-large;
-        font-weight: 400;
-    }
-    h3:nth-child(5) {
-        position: absolute;
-        left: 90%;
-        font-size: x-large;
-        font-weight: 400;
-    }
+  h3:nth-child(3) {
+    position: absolute;
+    left: 39%;
+    font-size: x-large;
+    font-weight: 400;
+  }
+  h3:nth-child(5) {
+    position: absolute;
+    left: 90%;
+    font-size: x-large;
+    font-weight: 400;
+  }
 
-    .temp-bar {
-        position: absolute;
-        top: 50%;
-        transform: translate(0, -50%);
-        left: 52%;
-        border-radius: 20px;
-    }
+  .temp-bar {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 52%;
+    border-radius: 20px;
+  }
 }
 
 // Desktop
 
 @media screen and (min-width: 1024px) {
-    .forecast-day {
-        i {
-            left: 21%;
-            position: absolute;
-            margin: 0 0.5rem;
-            font-size: 1.5rem;
-        }
-        h3:nth-child(1) {
-            font-size: 1rem;
-        }
-
-        h3:nth-child(3) {
-            position: absolute;
-            left: 39%;
-            font-size: 1rem;
-            font-weight: 400;
-        }
-        h3:nth-child(5) {
-            position: absolute;
-            left: 90%;
-            font-size: 1rem;
-            font-weight: 400;
-        }
-
-        .temp-bar {
-            position: absolute;
-            top: 50%;
-            transform: translate(0, -50%);
-            left: 55%;
-            border-radius: 20px;
-        }
+  .forecast-day {
+    svg {
+      left: 21%;
+      position: absolute;
+      margin: 0 0.5rem;
     }
+    h3:nth-child(1) {
+      font-size: 1rem;
+    }
+
+    h3:nth-child(3) {
+      position: absolute;
+      left: 39%;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+    h3:nth-child(5) {
+      position: absolute;
+      left: 90%;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .temp-bar {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      left: 55%;
+      border-radius: 20px;
+    }
+  }
 }

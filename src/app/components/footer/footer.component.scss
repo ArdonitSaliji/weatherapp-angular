@@ -1,48 +1,41 @@
 :host {
-    background-color: #2a3040;
-    width: 100%;
-    height: 10%;
-    margin-top: 10%;
-    border-top: 1px solid grey;
-    position: fixed;
-    bottom: 0;
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    padding: 0 1.5rem;
-    padding-top: 1.2rem;
+  background-color: #2a3040;
+  width: 100%;
+  height: 10%;
+  margin-top: 10%;
+  border-top: 1px solid grey;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: 0 1.5rem;
+  padding-top: 1.2rem;
 
-    > i:nth-child(1) {
-        font-size: 1.5rem;
-    }
+  > i:nth-child(1) {
+    font-size: 1.5rem;
+  }
 
-    > i:nth-child(3) {
-        font-size: 1.5rem;
-    }
+  > i:nth-child(3) {
+    font-size: 1.5rem;
+  }
 
-    div {
-        i {
-            padding: 0 0.5rem;
-        }
+  div {
+    i {
+      padding: 0 0.5rem;
     }
+  }
 }
 @media screen and (min-width: 1024px) {
-    :host {
-        height: 5rem;
-        width: 50%;
+  :host {
+    height: 4rem;
+    width: 50%;
 
-        > i:nth-child(1) {
-            font-size: 2rem;
-        }
-
-        > i:nth-child(3) {
-            font-size: 2rem;
-        }
-
-        div {
-            i {
-                padding: 0 0.5rem;
-            }
-        }
+    div {
+      svg {
+        font-size: 0.7rem;
+        padding: 0 0.2rem;
+      }
     }
+  }
 }
