@@ -1,93 +1,107 @@
 <div class="login-wrap">
-    <div class="login-html">
-        <input id="tab-1" type="radio" name="tab" class="sign-in" checked /><label
-            for="tab-1"
-            class="tab"
-            >Sign In</label
-        >
-        <input id="tab-2" type="radio" name="tab" class="sign-up" /><label for="tab-2" class="tab"
-            >Sign Up</label
-        >
-        <div class="login-form">
-            <form [formGroup]="loginForm" class="sign-in-htm">
-                <div class="group">
-                    <label for="user" class="label">Email</label>
-                    <input formControlName="email" id="username" type="text" class="input" />
-                </div>
-                <div class="group">
-                    <label for="pass" class="label">Password</label>
-                    <input
-                        formControlName="password"
-                        id="pass"
-                        type="password"
-                        class="input"
-                        data-type="password"
-                    />
-                </div>
-                <div class="group">
-                    <input id="check" type="checkbox" class="check" checked />
-                    <label for="check"><span class="icon"></span> Keep me Signed in</label>
-                </div>
-                <div class="group">
-                    <input mat-icon-button type="submit" class="button" value="Sign In" />
-                </div>
-                <div class="hr"></div>
-                <div class="foot-lnk">
-                    <a href="#forgot">Forgot Password?</a>
-                </div>
-                <div class="flex justify-center mt-5">
-                    <button
-                        class="px-4 py-2 border text-white flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
-                    >
-                        <img
-                            class="w-6 h-6"
-                            src="https://www.svgrepo.com/show/475656/google-color.svg"
-                            loading="lazy"
-                            alt="google logo"
-                            height="15px"
-                            width="15px"
-                        />
-                        <span>Login with Google</span>
-                    </button>
-                </div>
-            </form>
-            <form [formGroup]="signupForm" class="sign-up-htm">
-                <div class="group">
-                    <label for="user" class="label">Username</label>
-                    <input formControlName="username" id="user" type="text" class="input" />
-                </div>
-                <div class="group">
-                    <label for="pass" class="label">Password</label>
-                    <input
-                        formControlName="password"
-                        id="pass"
-                        type="password"
-                        class="input"
-                        data-type="password"
-                    />
-                </div>
-                <div class="group">
-                    <label for="pass" class="label">Repeat Password</label>
-                    <input
-                        formControlName="confirmPassword"
-                        id="pass2"
-                        type="password"
-                        class="input"
-                        data-type="password"
-                    />
-                </div>
-                <div class="group">
-                    <label for="pass" class="label">Email Address</label>
-                    <input formControlName="email" id="pass" type="text" class="input" />
-                </div>
-                <div class="group">
-                    <input type="submit" class="button" value="Sign Up" />
-                </div>
-                <div class="hr"></div>
-                <div class="foot-lnk">
-                    <label for="tab-1">Already Member?</label>
-                </div>
-            </form>
+  <div class="login-html">
+    <input id="tab-1" type="radio" name="tab" class="sign-in" checked /><label
+      for="tab-1"
+      class="tab"
+      >Sign In</label
+    >
+    <input id="tab-2" type="radio" name="tab" class="sign-up" /><label
+      for="tab-2"
+      class="tab"
+      >Sign Up</label
+    >
+    <div class="login-form">
+      <form [formGroup]="loginForm" class="sign-in-htm">
+        <div class="group">
+          <label for="user" class="label">Email</label>
+          <input
+            formControlName="email"
+            id="username"
+            type="text"
+            class="input"
+          />
         </div>
+        <div class="group">
+          <label for="pass" class="label">Password</label>
+          <input
+            formControlName="password"
+            id="pass"
+            type="password"
+            class="input"
+            data-type="password"
+          />
+        </div>
+        <div class="group">
+          <input id="check" type="checkbox" class="check" checked />
+          <label for="check"
+            ><span class="icon"></span> Keep me Signed in</label
+          >
+        </div>
+        <div class="group">
+          <input mat-icon-button type="submit" class="button" value="Sign In" />
+        </div>
+        <div class="hr"></div>
+        <div class="foot-lnk">
+          <a href="#forgot">Forgot Password?</a>
+        </div>
+        <div class="flex justify-center mt-5">
+          <button
+            class="px-4 py-2 border text-white flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
+          >
+            <img
+              class="w-6 h-6"
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              loading="lazy"
+              alt="google logo"
+              height="15px"
+              width="15px"
+            />
+            <span>Login with Google</span>
+          </button>
+        </div>
+      </form>
+      <form [formGroup]="signupForm" class="sign-up-htm">
+        <div class="group">
+          <label for="user" class="label">Username</label>
+          <input
+            formControlName="username"
+            id="user"
+            type="text"
+            class="input"
+          />
+        </div>
+        <div class="group">
+          <label for="pass" class="label">Password</label>
+          <input
+            formControlName="password"
+            id="pass"
+            type="password"
+            class="input"
+            data-type="password"
+          />
+        </div>
+        <div class="group">
+          <label for="pass" class="label">Repeat Password</label>
+          <input
+            formControlName="confirmPassword"
+            id="pass2"
+            type="password"
+            class="input"
+            data-type="password"
+          />
+        </div>
+        <div class="group">
+          <label for="pass" class="label">Email Address</label>
+          <input formControlName="email" id="pass" type="text" class="input" />
+        </div>
+        <div class="group">
+          <input type="submit" class="button" value="Sign Up" />
+        </div>
+        <div class="hr"></div>
+        <div class="foot-lnk">
+          <label for="tab-1">Already Member?</label>
+        </div>
+      </form>
     </div>
+  </div>
 </div>

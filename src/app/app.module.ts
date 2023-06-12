@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { WeatherSpecsComponent } from './pages/weather-specs/weather-specs.component';
 import { WeatherLocationComponent } from './pages/weather-location/weather-location.component';
-import { AuthComponent } from './pages/auth/auth.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ForecastDayComponent } from './widgets/forecast-day/forecast-day.component';
 import { Day10WeatherComponent } from './pages/day10-weather/day10-weather.component';
@@ -15,24 +14,38 @@ import { CompassSvgComponent } from './widgets/compass-svg/compass-svg.component
 import { WeatherVectorComponent } from './widgets/weather-vector/weather-vector.component';
 import { TempBarComponent } from './widgets/temp-bar/temp-bar.component';
 import { FormsModule } from '@angular/forms';
+import { AuthModule } from './pages/auth/auth.module';
+import { MatIconModule } from '@angular/material/icon';
+import { BarIconComponent } from './widgets/bar-icon/bar-icon.component';
+import { SearchBarComponent } from './widgets/search-bar/search-bar.component';
+import { LocationCityComponent } from './widgets/location-city/location-city.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomeComponent,
-        WeatherSpecsComponent,
-        WeatherLocationComponent,
-        FooterComponent,
-        ForecastDayComponent,
-        Day10WeatherComponent,
-        WeatherBgComponent,
-        WeatherCityComponent,
-        CompassSvgComponent,
-        WeatherVectorComponent,
-        TempBarComponent,
-    ],
-    imports: [BrowserModule, AppRoutingModule, FormsModule],
-    providers: [],
-    bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    WeatherSpecsComponent,
+    WeatherLocationComponent,
+    FooterComponent,
+    ForecastDayComponent,
+    Day10WeatherComponent,
+    WeatherBgComponent,
+    WeatherCityComponent,
+    CompassSvgComponent,
+    WeatherVectorComponent,
+    TempBarComponent,
+    BarIconComponent,
+    SearchBarComponent,
+    LocationCityComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    AuthModule,
+    MatIconModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

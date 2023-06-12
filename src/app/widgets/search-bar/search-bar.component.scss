@@ -1,0 +1,40 @@
+.search-bar {
+  margin-bottom: 1rem;
+  display: flex;
+  height: 2.5rem;
+  position: relative;
+  align-items: center;
+  .search-bar-bg {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    opacity: 0.1;
+    border-radius: 10px;
+  }
+
+  svg {
+    margin: 0 0.5rem;
+    path {
+      color: white;
+      fill: #fff;
+      opacity: 1 !important;
+    }
+  }
+
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-family: "SF Pro Display";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 23px;
+    letter-spacing: 0.03em;
+    background-color: transparent;
+    color: #ffffff;
+    opacity: 0.5;
+  }
+}
