@@ -4,7 +4,7 @@
     width: 100%;
     min-height: 100vh;
     max-height: 100%;
-    position: relative !important;
+    position: relative;
 }
 @media screen and (min-width: 1024px) {
     :host {
@@ -12,5 +12,6 @@
         height: 100%;
         width: 50%;
         justify-content: center;
+        overflow: hidden;
     }
 }
