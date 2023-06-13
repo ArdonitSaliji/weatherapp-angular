@@ -31,7 +31,6 @@ export class AuthComponent {
     this.authService.login(this.loginForm.value).subscribe(
       (response: any) => {
         console.log(response);
-
         this.loginForm.reset();
         this.cookieService.set('access_token', response.body.token);
         this.router.navigateByUrl('/home');

@@ -1,24 +1,18 @@
 <app-weather-bg></app-weather-bg>
 <div class="forecast">
-    <app-weather-city></app-weather-city>
+  <app-weather-city [weather]="userLocationWeather"></app-weather-city>
 
-    <div class="forecast-wrapper">
-        <div>
-            <i class="fa-solid fa-calendar-days"></i>
-            <h4>10-DAY FORECAST</h4>
-        </div>
-        <div class="forecast-days">
-            <app-forecast-day></app-forecast-day>
-            <app-forecast-day></app-forecast-day>
-            <app-forecast-day></app-forecast-day>
-            <app-forecast-day></app-forecast-day>
-            <app-forecast-day></app-forecast-day>
-            <app-forecast-day></app-forecast-day>
-            <app-forecast-day></app-forecast-day>
-            <app-forecast-day></app-forecast-day>
-            <app-forecast-day></app-forecast-day>
-            <app-forecast-day></app-forecast-day>
-        </div>
+  <div class="forecast-wrapper">
+    <div>
+      <i class="fa-solid fa-calendar-days"></i>
+      <h4>10-DAY FORECAST</h4>
     </div>
+    <div class="forecast-days">
+      <app-forecast-day
+        *ngFor="let day of days; let index"
+        [day]="day"
+      ></app-forecast-day>
+    </div>
+  </div>
 </div>
 <router-outlet></router-outlet>

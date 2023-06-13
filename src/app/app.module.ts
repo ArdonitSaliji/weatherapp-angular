@@ -21,34 +21,36 @@ import { LocationCityComponent } from './widgets/location-city/location-city.com
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { NavModalComponent } from './components/nav-modal/nav-modal.component';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomeComponent,
-        WeatherSpecsComponent,
-        WeatherLocationComponent,
-        FooterComponent,
-        ForecastDayComponent,
-        Day10WeatherComponent,
-        WeatherBgComponent,
-        WeatherCityComponent,
-        CompassSvgComponent,
-        WeatherVectorComponent,
-        TempBarComponent,
-        SearchBarComponent,
-        LocationCityComponent,
-        NavModalComponent,
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        AuthModule,
-        HttpClientModule,
-        MatIconModule,
-    ],
-    providers: [CookieService],
-    bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    WeatherSpecsComponent,
+    WeatherLocationComponent,
+    FooterComponent,
+    ForecastDayComponent,
+    Day10WeatherComponent,
+    WeatherBgComponent,
+    WeatherCityComponent,
+    CompassSvgComponent,
+    WeatherVectorComponent,
+    TempBarComponent,
+    SearchBarComponent,
+    LocationCityComponent,
+    NavModalComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    AuthModule,
+    HttpClientModule,
+    MatIconModule,
+    CommonModule,
+  ],
+  providers: [CookieService, DatePipe],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

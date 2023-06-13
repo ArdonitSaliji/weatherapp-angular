@@ -1,7 +1,10 @@
 <router-outlet style="display: none"></router-outlet>
-<app-footer (openNavModalEvent)="openNavModalEv()" *ngIf="!isBaseUrl()"></app-footer>
+<app-footer
+  (openNavModalEvent)="openNavModalEv()"
+  *ngIf="!isBaseUrl()"
+></app-footer>
 <app-nav-modal
-    class="nav-modal"
-    (closeNavModal)="closeNavModal()"
-    [showNav]="showNav"
+  class="nav-modal"
+  (closeNavModal)="closeNavModal()"
+  [showNav]="showNav"
 ></app-nav-modal>
