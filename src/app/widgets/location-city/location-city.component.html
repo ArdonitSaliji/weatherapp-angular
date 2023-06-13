@@ -1,7 +1,11 @@
 <div class="location-city">
   <h2>My Location</h2>
-  <h3>Seongnam-si</h3>
-  <h1>21º</h1>
-  <h3>Partly Cloudy</h3>
-  <h4>H:29º L:15º</h4>
+  <h3>{{ weather.city.name }}</h3>
+  <h1>{{ weather.list[0].main.temp }}º</h1>
+  <h3>{{ weather.list[0].weather[0].description }}</h3>
+  <h4>
+    H:{{ weather.list[0].main.temp_max }}º L:{{
+      weather.list[0].main.temp_min
+    }}º
+  </h4>
 </div>
