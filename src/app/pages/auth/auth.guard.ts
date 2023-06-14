@@ -11,3 +11,13 @@ export const AuthGuard = () => {
 
   return router.parseUrl('/');
 };
+
+export const LoginGuard = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+  if (authService.isAuthenticated()) {
+    return router.parseUrl('/home');
+  }
+
+  return true;
+};

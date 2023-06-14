@@ -1,8 +1,8 @@
 <div class="forecast-day">
-  <h3>{{ day.day }}</h3>
+  <h3>{{ day?.day }}</h3>
   <i class="fa-solid fa-cloud-sun-rain"></i>
-  <h3>{{ day.weather.temp_min }}º</h3>
+  <h3>{{ day?.weather.temp_min }}º</h3>
   <app-temp-bar class="temp-bar"></app-temp-bar>
-  <h3>{{ day.weather.temp_max }}º</h3>
+  <h3>{{ day?.weather.temp_max }}º</h3>
 </div>
 <hr />

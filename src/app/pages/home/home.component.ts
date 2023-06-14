@@ -9,8 +9,11 @@ import { WeatherApiService } from 'src/app/services/weather-api.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private geoLocation: GetLocationService) {}
-  userLocationWeather: any = [];
+  constructor(
+    private geoLocation: GetLocationService,
+    private weatherApi: WeatherApiService
+  ) {}
+  userLocationWeather!: any;
   days: any = [];
 
   getDays() {
@@ -34,26 +37,26 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    // if (this.geoLocation.weatherInformation.length > 0) {
-    //   this.geoLocation.getLocation(this.weatherApi.getUserWeather);
-    // }
-    this.geoLocation.weatherAPIResult
-      .pipe<any>(
-        map((data) => {
-          data.list.map((day: any) => {
-            day.main.temp = Math.round(day.main.temp);
-            day.main.temp_min = Math.round(day.main.temp_min);
-            day.main.temp_max = Math.round(day.main.temp_max);
-          });
+  // formatData(data: any) {
+  //   data.list.map((day: any) => {
+  //     day.main.temp = Math.round(day.main.temp);
+  //     day.main.temp_min = Math.round(day.main.temp_min);
+  //     day.main.temp_max = Math.round(day.main.temp_max);
+  //   });
+  // }
 
-          return data;
-        })
-      )
-      .subscribe((res) => {
+  getWeather() {
+    this.weatherApi
+      .getUserWeather()
+
+      .subscribe((res: any) => {
         console.log(res);
         this.userLocationWeather = res;
+        this.getDays();
       });
-    this.getDays();
+  }
+
+  ngOnInit(): void {
+    this.getWeather();
   }
 }

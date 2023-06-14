@@ -1,28 +1,32 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  catchError,
+  from,
+  map,
+  throwError,
+} from 'rxjs';
 import * as weatherAPIResult from 'src/assets/forecast40.json';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GetLocationService {
-  weatherInformation = [];
-
-  weatherAPIResult: BehaviorSubject<any> = new BehaviorSubject<any>(
-    weatherAPIResult
-  );
-
   constructor() {}
+  location: any = {};
 
-  getLocation(getUserWeather: any): any {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const lon = position.coords.longitude;
-        const lat = position.coords.latitude;
-        getUserWeather(lat, lon);
-      });
-    } else {
-      console.log('No support for geolocation');
-    }
+  getCords() {
+    return this.getLocation().then((position) => position.coords);
+  }
+
+  getLocation() {
+    return new Promise<GeolocationPosition>((resolve, reject) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+      } else {
+        reject(new Error('No support for geolocation'));
+      }
+    });
   }
 }

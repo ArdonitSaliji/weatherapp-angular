@@ -1,13 +1,13 @@
 <app-weather-bg></app-weather-bg>
 <div class="weather-today">
-  <h2 class="today-city">{{ userLocationWeather.city.name }}</h2>
-  <h1 class="today-temp">{{ userLocationWeather.list[0].main.temp }}º</h1>
+  <h2 class="today-city">{{ userLocationWeather?.city.name }}</h2>
+  <h1 class="today-temp">{{ userLocationWeather?.list[0].main.temp }}º</h1>
   <h4 class="today-condition">
-    {{ userLocationWeather.list[0].weather[0].description }}
+    {{ userLocationWeather?.list[0].weather[0].description }}
   </h4>
   <h4 class="today-h-l">
-    H:{{ userLocationWeather.list[0].main.temp_max }}º L:{{
-      userLocationWeather.list[0].main.temp_min
+    H:{{ userLocationWeather?.list[0].main.temp_max }}º L:{{
+      userLocationWeather?.list[0].main.temp_min
     }}º
   </h4>
 </div>
@@ -20,7 +20,7 @@
     <div class="weather-hour">
       <p>Now</p>
       <i class="fa-solid fa-cloud-moon"></i>
-      <p class="hour-temp">{{ userLocationWeather.list[0].main.temp }}º</p>
+      <p class="hour-temp">{{ userLocationWeather?.list[0].main.temp }}º</p>
     </div>
     <div class="weather-hour">
       <p>10PM</p>

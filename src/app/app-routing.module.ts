@@ -5,12 +5,12 @@ import { Day10WeatherComponent } from './pages/day10-weather/day10-weather.compo
 import { WeatherSpecsComponent } from './pages/weather-specs/weather-specs.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { WeatherLocationComponent } from './pages/weather-location/weather-location.component';
-import { AuthGuard } from './pages/auth/auth.guard';
+import { AuthGuard, LoginGuard } from './pages/auth/auth.guard';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
-  { path: '', component: AuthComponent },
+  { path: '', component: AuthComponent, canActivate: [LoginGuard] },
   {
     path: 'home',
     component: HomeComponent,
