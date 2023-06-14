@@ -29,7 +29,7 @@ export class AuthService {
   login(loginForm: any): Observable<any> {
     return this.http
       .post<User>(
-        'http://localhost:3000/api/login',
+        'http://192.168.100.29:3000/api/login',
         loginForm,
         this.httpOptions
       )

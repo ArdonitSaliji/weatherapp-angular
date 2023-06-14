@@ -1,4 +1,84 @@
 :host {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  z-index: 5;
+  background-color: #041e33;
+  transform: translateX(100%);
+  transition: 0.3s all;
+  z-index: 11;
+  &.showNavModal {
+    transform: translateX(0);
+  }
+}
+
+.nav {
+  position: relative;
+  height: 100%;
+
+  .logo-img {
+    margin: 2rem;
+    margin-left: 1.5rem;
+    margin-bottom: 3rem;
+    border-radius: 8px;
+  }
+
+  ul {
+    padding: 0 1.3rem;
+
+    display: flex;
+    flex-direction: column;
+
+    li {
+      display: flex;
+      padding: 0 7px;
+      height: 2.5rem;
+      color: white;
+      margin: 1rem 0;
+      cursor: pointer;
+      border-radius: 4px;
+      align-items: center;
+      justify-content: flex-start;
+      svg {
+        margin-right: 1rem;
+        margin-left: 0.5rem;
+      }
+
+      &:hover {
+        background-color: #667a8a;
+      }
+    }
+  }
+
+  .logout {
+    bottom: 7%;
+    left: 50%;
+    width: 80%;
+    height: 3rem;
+    display: flex;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    position: absolute;
+    align-items: center;
+    transform: translate(-50%);
+    justify-content: flex-start;
+    background-color: #667a8a;
+
+    &:hover {
+      background-color: #4a545c;
+    }
+
+    svg {
+      margin-left: 0.8rem;
+      margin-right: 0.8rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  :host {
     width: 22%;
     height: 100%;
     position: absolute;
@@ -9,70 +89,7 @@
     transition: 0.3s all;
     z-index: 11;
     &.showNavModal {
-        transform: translateX(0);
+      transform: translateX(0);
     }
-}
-
-.nav {
-    position: relative;
-    height: 100%;
-
-    .logo-img {
-        margin: 2rem;
-        margin-left: 1.5rem;
-        margin-bottom: 3rem;
-        border-radius: 8px;
-    }
-
-    ul {
-        padding: 0 1.3rem;
-
-        display: flex;
-        flex-direction: column;
-
-        li {
-            display: flex;
-            padding: 0 7px;
-            height: 2.5rem;
-            color: white;
-            margin: 1rem 0;
-            cursor: pointer;
-            border-radius: 4px;
-            align-items: center;
-            justify-content: flex-start;
-            svg {
-                margin-right: 1rem;
-                margin-left: 0.5rem;
-            }
-
-            &:hover {
-                background-color: #667a8a;
-            }
-        }
-    }
-
-    .logout {
-        bottom: 7%;
-        left: 50%;
-        width: 80%;
-        height: 3rem;
-        display: flex;
-        color: white;
-        cursor: pointer;
-        border-radius: 4px;
-        position: absolute;
-        align-items: center;
-        transform: translate(-50%);
-        justify-content: flex-start;
-        background-color: #667a8a;
-
-        &:hover {
-            background-color: #4a545c;
-        }
-
-        svg {
-            margin-left: 0.8rem;
-            margin-right: 0.8rem;
-        }
-    }
+  }
 }

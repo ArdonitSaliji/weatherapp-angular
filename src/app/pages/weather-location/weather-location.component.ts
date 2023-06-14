@@ -22,4 +22,10 @@ export class WeatherLocationComponent {
       this.userLocationWeather = res;
     });
   }
+
+  cityWeather(data: any) {
+    this.weatherApi.getCity(data).subscribe((res: any) => {
+      console.log(res);
+    });
+  }
 }

@@ -14,5 +14,10 @@
     />
   </svg>
 
-  <input type="text" placeholder="Search for a city or airport" />
+  <input
+    [(ngModel)]="searchText"
+    (keydown.enter)="onEnter()"
+    type="text"
+    placeholder="Search for a city or airport"
+  />
 </div>

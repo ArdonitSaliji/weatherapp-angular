@@ -16,6 +16,8 @@ export class WeatherApiService {
     private datePipe: DatePipe
   ) {}
 
+  city!: any;
+
   formatData(data: any) {
     data.list.map((day: any) => {
       day.main.temp = Math.round(day.main.temp);
@@ -59,26 +61,27 @@ export class WeatherApiService {
     });
   }
 
-  // getCityWeather(): Observable<any> {
-  //   return new Observable<any>((observer) => {
-  //     this.geoLocation.getCords().then((res: any) => {
-  //       this.http
-  //         .get<any>(
-  //           `https://pro.openweathermap.org/data/2.5/forecast/climate?q=${cityname}&appid=${environment.WEATHER_API_KEY}&units=metric`
-  //         )
-  //         .subscribe({
-  //           next: (res: any) => {
-  //             this.formatData(res);
-  //             observer.next(res);
-  //           },
-  //           error: (error: any) => {
-  //             observer.error(error);
-  //           },
-  //           complete: () => {
-  //             observer.complete();
-  //           },
-  //         });
-  //     });
-  //   });
-  // }
+  getCityWeather(data: any): Observable<any> {
+    return new Observable<any>((observer) => {
+      this.http
+        .get<any>(
+          `http://api.openweathermap.org/geo/1.0/direct?q=${data}&limit=5&appid=${environment.WEATHER_API_KEY}`
+        )
+        .subscribe({
+          next: (res: any) => {
+            observer.next(res);
+          },
+          error: (error: any) => {
+            observer.error(error);
+          },
+          complete: () => {
+            observer.complete();
+          },
+        });
+    });
+  }
+
+  getCity(data: any) {
+    return this.getCityWeather(data);
+  }
 }

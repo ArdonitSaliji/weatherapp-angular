@@ -14,7 +14,7 @@
 
 <div>
   <h1>Weather</h1>
-  <app-search-bar></app-search-bar>
+  <app-search-bar (sendInput)="cityWeather($event)"></app-search-bar>
 
   <div class="location-cities">
     <app-location-city [weather]="userLocationWeather"></app-location-city>

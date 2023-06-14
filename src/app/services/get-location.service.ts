@@ -20,4 +20,8 @@ export class GetLocationService {
       }
     });
   }
+
+  getCity(city: any) {
+    return city;
+  }
 }
