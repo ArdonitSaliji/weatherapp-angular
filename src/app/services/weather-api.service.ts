@@ -84,4 +84,29 @@ export class WeatherApiService {
   getCity(data: any) {
     return this.getCityWeather(data);
   }
+
+  getCityData(data: any) {
+    return this.getCityWeatherData(data.lan, data.lon);
+  }
+
+  getCityWeatherData(lat: any, lon: any) {
+    return new Observable<any>((observer) => {
+      this.http
+        .get<any>(
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${environment.WEATHER_API_KEY}&units=metric`
+        )
+        .subscribe({
+          next: (res: any) => {
+            this.formatData(res);
+            observer.next(res);
+          },
+          error: (error: any) => {
+            observer.error(error);
+          },
+          complete: () => {
+            observer.complete();
+          },
+        });
+    });
+  }
 }

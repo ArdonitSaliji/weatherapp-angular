@@ -25,7 +25,11 @@ export class WeatherLocationComponent {
 
   cityWeather(data: any) {
     this.weatherApi.getCity(data).subscribe((res: any) => {
-      console.log(res);
+      this.weatherApi
+        .getCityWeatherData(res[0].lat, res[0].lon)
+        .subscribe((res: any) => {
+          console.log(res);
+        });
     });
   }
 }

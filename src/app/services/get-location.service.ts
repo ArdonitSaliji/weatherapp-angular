@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class GetLocationService {
   constructor() {}
-  location: any = {};
 
   getCords() {
     return this.getLocation().then((position) => position.coords);
