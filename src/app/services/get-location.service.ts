@@ -1,13 +1,4 @@
 import { Injectable } from '@angular/core';
-import {
-  BehaviorSubject,
-  Observable,
-  catchError,
-  from,
-  map,
-  throwError,
-} from 'rxjs';
-import * as weatherAPIResult from 'src/assets/forecast40.json';
 
 @Injectable({
   providedIn: 'root',

@@ -3,12 +3,17 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
 import { User } from '../models/User';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient, private cookieService: CookieService) {}
+  constructor(
+    private http: HttpClient,
+    private cookieService: CookieService,
+    private router: Router
+  ) {}
 
   httpOptions: any = {
     headers: new HttpHeaders({
@@ -39,5 +44,10 @@ export class AuthService {
         this.httpOptions
       )
       .pipe(catchError(signupForm));
+  }
+
+  logout() {
+    this.cookieService.delete('access_token');
+    this.router.navigateByUrl('/');
   }
 }

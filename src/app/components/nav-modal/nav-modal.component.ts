@@ -10,6 +10,7 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-nav-modal',
   templateUrl: './nav-modal.component.html',
@@ -19,7 +20,7 @@ export class NavModalComponent {
   @Output() closeNavModal = new EventEmitter<void>();
   @Input() showNav = false;
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   @HostBinding('class.showNavModal') get open() {
     return this.showNav;
@@ -35,5 +36,9 @@ export class NavModalComponent {
     if (this.showNav && !targetElement.classList.contains('modal')) {
       this.closeNavModal.emit();
     }
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

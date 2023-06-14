@@ -8,6 +8,7 @@ import { DatePipe } from '@angular/common';
 @Injectable({
   providedIn: 'root',
 })
+//
 export class WeatherApiService {
   constructor(
     private http: HttpClient,
@@ -57,4 +58,27 @@ export class WeatherApiService {
       });
     });
   }
+
+  // getCityWeather(): Observable<any> {
+  //   return new Observable<any>((observer) => {
+  //     this.geoLocation.getCords().then((res: any) => {
+  //       this.http
+  //         .get<any>(
+  //           `https://pro.openweathermap.org/data/2.5/forecast/climate?q=${cityname}&appid=${environment.WEATHER_API_KEY}&units=metric`
+  //         )
+  //         .subscribe({
+  //           next: (res: any) => {
+  //             this.formatData(res);
+  //             observer.next(res);
+  //           },
+  //           error: (error: any) => {
+  //             observer.error(error);
+  //           },
+  //           complete: () => {
+  //             observer.complete();
+  //           },
+  //         });
+  //     });
+  //   });
+  // }
 }
