@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./weather-city.component.scss'],
 })
 export class WeatherCityComponent {
-  @Input('weather') weather: any;
+  @Input('weather') weather!: any;
 }

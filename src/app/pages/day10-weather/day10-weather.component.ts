@@ -23,15 +23,44 @@ export class Day10WeatherComponent implements OnInit {
       this.days.push({
         day: i === 0 ? 'Today' : date.toLocaleDateString('en-US', options),
         weather: this.userLocationWeather.list[i].main,
+        cond: this.userLocationWeather.list[i].weather[0].description,
       });
       date.setDate(date.getDate() + 1);
     }
   }
 
+  citySelected: any = sessionStorage.getItem('citySelected');
+  // ngOnInit(): void {
+  //   this.weatherApi.getUserWeather().subscribe((res: any) => {
+  //     this.userLocationWeather = res;
+  //     this.getDays();
+  //   });
+  // }
+  getWeather() {
+    this.weatherApi
+      .getUserWeather()
+
+      .subscribe((res: any) => {
+        console.log(res);
+        this.userLocationWeather = res;
+        this.getDays();
+      });
+  }
+
   ngOnInit(): void {
-    this.weatherApi.getUserWeather().subscribe((res: any) => {
-      this.userLocationWeather = res;
-      this.getDays();
-    });
+    if (!this.citySelected) {
+      this.getWeather();
+    } else {
+      this.weatherApi
+        .getCityWeather(this.citySelected)
+        .subscribe((res: any) => {
+          this.weatherApi
+            .getCityWeatherData(res[0].lat, res[0].lon)
+            .subscribe((res: any) => {
+              this.userLocationWeather = res;
+              this.getDays();
+            });
+        });
+    }
   }
 }

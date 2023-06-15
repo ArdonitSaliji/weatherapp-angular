@@ -1,5 +1,7 @@
-<h1>{{ weather?.city?.name }}</h1>
-<h3>
-  {{ weather?.list[0]?.main?.temp }}º |
-  {{ weather?.list[0]?.weather[0]?.description }}
+<h1 *ngIf="weather?.list && weather.list.length > 0">
+  {{ weather.city?.name }}
+</h1>
+<h3 *ngIf="weather?.list && weather.list.length > 0">
+  {{ weather.list[0]?.main?.temp }}º |
+  {{ weather.list[0]?.weather[0]?.description }}
 </h3>

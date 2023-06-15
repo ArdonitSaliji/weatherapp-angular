@@ -7,10 +7,18 @@
     border-radius: 16px;
     background: url("/assets/city-bg.png");
     position: relative;
+    transition: 0.3s all;
+    &:hover {
+      box-shadow: 0px 0px 5px white;
+      cursor: pointer;
+    }
+
     h2,
     h3,
     h1,
-    h4 {
+    h4,
+    svg,
+    i {
       position: absolute;
     }
 
@@ -33,7 +41,7 @@
       left: 5%;
     }
 
-    h3:nth-child(4) {
+    h3:nth-child(5) {
       bottom: 7%;
       left: 5%;
     }
@@ -42,6 +50,13 @@
       font-size: 15px;
       bottom: 7%;
       right: 10%;
+    }
+
+    svg,
+    i {
+      top: 13%;
+      left: 25%;
+      cursor: pointer;
     }
   }
 }

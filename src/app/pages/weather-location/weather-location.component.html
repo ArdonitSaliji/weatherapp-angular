@@ -17,7 +17,11 @@
   <app-search-bar (sendInput)="cityWeather($event)"></app-search-bar>
 
   <div class="location-cities">
-    <app-location-city [weather]="userLocationWeather"></app-location-city>
+    <app-location-city
+      *ngFor="let loc of userLocationWeather"
+      [weather]="loc"
+      (delCity)="deleteCity($event)"
+    ></app-location-city>
   </div>
   <div class="learn-more">
     <p>

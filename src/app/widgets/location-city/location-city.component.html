@@ -1,11 +1,16 @@
-<div class="location-city">
+<div (click)="showCityWeather(weather?.city?.name)" class="location-city">
   <h2>My Location</h2>
-  <h3>{{ weather.city.name }}</h3>
-  <h1>{{ weather.list[0].main.temp }}º</h1>
-  <h3>{{ weather.list[0].weather[0].description }}</h3>
+  <h3>{{ weather?.city?.name }}</h3>
+  <span (click)="deleteCity(weather?.city?.name)"
+    ><i class="fa-solid fa-trash"></i
+  ></span>
+  <h1>{{ weather.list?.length > 0 && weather?.list[0]?.main?.temp }}º</h1>
+  <h3>
+    {{ weather.list?.length > 0 && weather.list[0].weather[0]?.description }}
+  </h3>
   <h4>
-    H:{{ weather.list[0].main.temp_max }}º L:{{
-      weather.list[0].main.temp_min
+    H:{{ weather.list?.length > 0 && weather?.list[0]?.main?.temp_max }}º L:{{
+      weather.list?.length > 0 && weather?.list[0]?.main?.temp_min
     }}º
   </h4>
 </div>

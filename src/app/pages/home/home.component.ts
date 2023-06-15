@@ -22,28 +22,23 @@ export class HomeComponent implements OnInit {
     this.days.push({
       day: 'Today',
       weather: this.userLocationWeather.list[0].main,
+      cond: this.userLocationWeather.list[0].weather[0].description,
     });
-
+    console.log(this.userLocationWeather);
     date.setDate(date.getDate() + 1);
     this.days.push({
       day: date.toLocaleDateString('en-US', options),
       weather: this.userLocationWeather.list[1].main,
+      cond: this.userLocationWeather.list[1].weather[0].description,
     });
 
     date.setDate(date.getDate() + 1);
     this.days.push({
       day: date.toLocaleDateString('en-US', options),
       weather: this.userLocationWeather.list[2].main,
+      cond: this.userLocationWeather.list[2].weather[0].description,
     });
   }
-
-  // formatData(data: any) {
-  //   data.list.map((day: any) => {
-  //     day.main.temp = Math.round(day.main.temp);
-  //     day.main.temp_min = Math.round(day.main.temp_min);
-  //     day.main.temp_max = Math.round(day.main.temp_max);
-  //   });
-  // }
 
   getWeather() {
     this.weatherApi
@@ -56,7 +51,22 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  citySelected: any = sessionStorage.getItem('citySelected');
+
   ngOnInit(): void {
-    this.getWeather();
+    if (!this.citySelected) {
+      this.getWeather();
+    } else {
+      this.weatherApi
+        .getCityWeather(this.citySelected)
+        .subscribe((res: any) => {
+          this.weatherApi
+            .getCityWeatherData(res[0].lat, res[0].lon)
+            .subscribe((res: any) => {
+              this.userLocationWeather = res;
+              this.getDays();
+            });
+        });
+    }
   }
 }

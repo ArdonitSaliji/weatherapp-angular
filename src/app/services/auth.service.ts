@@ -21,15 +21,31 @@ export class AuthService {
     }),
     observe: 'response',
   };
+  userToken = this.cookieService.get('access_token');
+
+  httpOptionsWithToken: any = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.userToken}`,
+    }),
+    observe: 'response',
+  };
 
   isAuthenticated(): boolean {
     return this.cookieService.get('access_token') ? true : false;
   }
 
+  getUserId(): Observable<any> {
+    return this.http.get<any>(
+      `http://localhost:3000/api/user/id`,
+      this.httpOptionsWithToken
+    );
+  }
+
   login(loginForm: any): Observable<any> {
     return this.http
       .post<User>(
-        'http://192.168.100.29:3000/api/login',
+        'http://localhost:3000/api/login',
         loginForm,
         this.httpOptions
       )

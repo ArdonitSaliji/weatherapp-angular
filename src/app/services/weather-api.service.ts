@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { GetLocationService } from './get-location.service';
 import { DatePipe } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,8 @@ export class WeatherApiService {
   constructor(
     private http: HttpClient,
     private geoLocation: GetLocationService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private cookieService: CookieService
   ) {}
 
   city!: any;
@@ -86,7 +88,7 @@ export class WeatherApiService {
   }
 
   getCityData(data: any) {
-    return this.getCityWeatherData(data.lan, data.lon);
+    return this.getCityWeatherData(data.lat, data.lon);
   }
 
   getCityWeatherData(lat: any, lon: any) {
@@ -98,6 +100,94 @@ export class WeatherApiService {
         .subscribe({
           next: (res: any) => {
             this.formatData(res);
+            observer.next(res);
+          },
+          error: (error: any) => {
+            observer.error(error);
+          },
+          complete: () => {
+            observer.complete();
+          },
+        });
+    });
+  }
+
+  userToken = this.cookieService.get('access_token');
+  httpOptionsWithToken: any = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.userToken}`,
+    }),
+    observe: 'response',
+  };
+
+  saveCity(cityName: any) {
+    return new Observable<any>((observer) => {
+      this.getCity(cityName).subscribe((res: any) => {
+        return new Observable<any>((observer) => {
+          this.http
+            .post<any>(
+              `http://localhost:3000/api/user/city/save`,
+              { cityName: res[0]?.name },
+              this.httpOptionsWithToken
+            )
+            .subscribe({
+              next: (res: any) => {
+                observer.next(res);
+              },
+              error: (error: any) => {
+                observer.error(error);
+              },
+              complete: () => {
+                observer.complete();
+              },
+            });
+        }).subscribe({
+          next: (res: any) => {
+            observer.next(res);
+          },
+          error: (error: any) => {
+            observer.error(error);
+          },
+          complete: () => {
+            observer.complete();
+          },
+        });
+      });
+    });
+  }
+
+  getUserCities() {
+    return new Observable<any>((observer) => {
+      this.http
+        .get<any>(
+          `http://localhost:3000/api/user/city/get`,
+          this.httpOptionsWithToken
+        )
+        .subscribe({
+          next: (res: any) => {
+            observer.next(res);
+          },
+          error: (error: any) => {
+            observer.error(error);
+          },
+          complete: () => {
+            observer.complete();
+          },
+        });
+    });
+  }
+
+  deleteCity(cityName: any) {
+    return new Observable<any>((observer) => {
+      this.http
+        .post<any>(
+          `http://localhost:3000/api/user/city/delete`,
+          { cityName: cityName },
+          this.httpOptionsWithToken
+        )
+        .subscribe({
+          next: (res: any) => {
             observer.next(res);
           },
           error: (error: any) => {
