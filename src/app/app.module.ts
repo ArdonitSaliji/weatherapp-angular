@@ -22,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { NavModalComponent } from './components/nav-modal/nav-modal.component';
 import { CommonModule, DatePipe } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { CommonModule, DatePipe } from '@angular/common';
     HttpClientModule,
     MatIconModule,
     CommonModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
   ],
   providers: [CookieService, DatePipe],
   bootstrap: [AppComponent],

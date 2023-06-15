@@ -7,63 +7,89 @@ $cardBg: rgba(45, 51, 64, 1);
 
 // Font
 @font-face {
-    font-family: 'sf-pro-display';
-    src: url('assets/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF') format('otf'),
-        url('assets/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF') format('otf'),
-        url('assets/sf-pro-display-cufonfonts/SFPRODISPLAYHEAVYITALIC.OTF') format('otf'),
-        url('assets/sf-pro-display-cufonfonts/SFPRODISPLAYLIGHTITALIC.OTF') format('otf'),
-        url('assets/sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.OTF') format('otf'),
-        url('assets/sf-pro-display-cufonfonts/SFPRODISPLAYREGULAR.OTF') format('otf'),
-        url('assets/sf-pro-display-cufonfonts/SFPRODISPLAYSEMIBOLDITALIC.OTF') format('otf'),
-        url('assets/sf-pro-display-cufonfonts/SFPRODISPLAYTHINITALIC.OTF') format('otf'),
-        url('assets/sf-pro-display-cufonfonts/SFPRODISPLAYULTRALIGHTITALIC.OTF') format('otf');
+  font-family: "sf-pro-display";
+  src: url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF")
+      format("otf"),
+    url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF") format("otf"),
+    url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYHEAVYITALIC.OTF")
+      format("otf"),
+    url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYLIGHTITALIC.OTF")
+      format("otf"),
+    url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.OTF") format("otf"),
+    url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYREGULAR.OTF")
+      format("otf"),
+    url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYSEMIBOLDITALIC.OTF")
+      format("otf"),
+    url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYTHINITALIC.OTF")
+      format("otf"),
+    url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYULTRALIGHTITALIC.OTF")
+      format("otf");
 }
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'sf-pro-display';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "sf-pro-display";
 }
 
 body {
-    background: linear-gradient(180deg, #121923 0%, #2b3142 100%);
-    min-height: 100vh;
-    max-height: 100%;
+  background: linear-gradient(180deg, #121923 0%, #2b3142 100%);
+  min-height: 100vh;
+  max-height: 100%;
+  position: relative;
 }
 
 .weather-bg {
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.3;
-    z-index: 1;
-    position: absolute;
-    background-image: url('/assets/weather-bg.png');
-    background-size: cover;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  z-index: 1;
+  position: absolute;
+  background-image: url("/assets/weather-bg.png");
+  background-size: cover;
 }
 .weather-bg-stars {
-    top: 0;
-    opacity: 1;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-image: url('/assets/weather-bg-stars.png');
-    background-size: cover;
+  top: 0;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url("/assets/weather-bg-stars.png");
+  background-size: cover;
 }
 .forecast-city {
-    display: flex;
-    color: white;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  color: white;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  flex-direction: column;
+}
+
+.green-snackbar {
+  background-color: rgb(55, 219, 63);
+  color: white;
+}
+
+.cdk-overlay-pane {
+  z-index: 20;
+  position: fixed !important;
+  top: 2%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.red-snackbar {
+  background-color: rgb(223, 36, 36);
+  color: white;
 }
 
 @media screen and (min-width: 1024px) {
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(0deg, #121923 0%, #2b3142 100%);
-    }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(0deg, #121923 0%, #2b3142 100%);
+  }
 }

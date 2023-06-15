@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,7 +17,8 @@ export class AuthComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private snackBar: MatSnackBar
   ) {}
 
   loginForm: FormGroup = new FormGroup({
@@ -33,9 +39,19 @@ export class AuthComponent {
         console.log(response);
         this.loginForm.reset();
         this.cookieService.set('access_token', response.body.token);
+        this.snackBar.open('Login Successful!', 'Close', {
+          duration: 3000,
+          verticalPosition: 'top' as MatSnackBarVerticalPosition,
+          panelClass: ['green-snackbar'],
+        });
         this.router.navigateByUrl('/home');
       },
       (error) => {
+        this.snackBar.open('Invalid Credentials!', 'Close', {
+          duration: 3000,
+          verticalPosition: 'top' as MatSnackBarVerticalPosition,
+          panelClass: ['red-snackbar'],
+        });
         console.error(error);
       }
     );

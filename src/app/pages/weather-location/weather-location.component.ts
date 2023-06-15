@@ -10,11 +10,7 @@ import { WeatherApiService } from 'src/app/services/weather-api.service';
   styleUrls: ['./weather-location.component.scss'],
 })
 export class WeatherLocationComponent {
-  constructor(
-    private geoLocation: GetLocationService,
-    private datePipe: DatePipe,
-    private weatherApi: WeatherApiService
-  ) {}
+  constructor(private weatherApi: WeatherApiService) {}
   userLocationWeather: any = [];
 
   ngOnInit(): void {
