@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Icons } from 'src/app/icons';
-import { Conditions } from 'src/app/conditions';
 @Component({
   selector: 'app-forecast-day',
   templateUrl: './forecast-day.component.html',
@@ -28,7 +26,7 @@ export class ForecastDayComponent {
       case 'moderate rain':
         return 'fa-solid fa-cloud-rain';
       default:
-        return ''; // Return an empty string or a default icon if the condition is not recognized.
+        return '';
     }
   }
 }

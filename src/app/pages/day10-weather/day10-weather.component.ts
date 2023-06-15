@@ -41,7 +41,6 @@ export class Day10WeatherComponent implements OnInit {
       .getUserWeather()
 
       .subscribe((res: any) => {
-        console.log(res);
         this.userLocationWeather = res;
         this.getDays();
       });

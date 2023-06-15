@@ -23,7 +23,6 @@ export class WeatherLocationComponent {
 
   getCities() {
     this.weatherApi.getUserCities().subscribe((res: any) => {
-      console.log(res);
       res.body?.cities &&
         res.body?.cities?.map((city: any) => {
           this.weatherApi.getCity(city.cityName).subscribe((res: any) => {
@@ -41,7 +40,6 @@ export class WeatherLocationComponent {
         .getCityWeatherData(res[0].lat, res[0].lon)
         .subscribe((res: any) => {
           this.userLocationWeather.push(res);
-          console.log(res);
           this.weatherApi.saveCity(data).subscribe((res: any) => {});
         });
     });

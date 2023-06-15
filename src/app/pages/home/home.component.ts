@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
       weather: this.userLocationWeather.list[0].main,
       cond: this.userLocationWeather.list[0].weather[0].description,
     });
-    console.log(this.userLocationWeather);
     date.setDate(date.getDate() + 1);
     this.days.push({
       day: date.toLocaleDateString('en-US', options),
@@ -45,7 +44,6 @@ export class HomeComponent implements OnInit {
       .getUserWeather()
 
       .subscribe((res: any) => {
-        console.log(res);
         this.userLocationWeather = res;
         this.getDays();
       });

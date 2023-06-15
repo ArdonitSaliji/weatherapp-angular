@@ -14,7 +14,6 @@ export class AppComponent {
   showNav = false;
 
   openNavModalEv(): void {
-    console.log('fdgsd');
     this.showNav = true;
   }
 

@@ -10,17 +10,13 @@ import { WeatherApiService } from 'src/app/services/weather-api.service';
   styleUrls: ['./weather-specs.component.scss'],
 })
 export class WeatherSpecsComponent {
-  constructor(
-    private weatherApi: WeatherApiService,
-    private datePipe: DatePipe
-  ) {}
+  constructor(private weatherApi: WeatherApiService) {}
   userLocationWeather!: any;
   getWeather() {
     this.weatherApi
       .getUserWeather()
 
       .subscribe((res: any) => {
-        console.log(res);
         this.userLocationWeather = res;
       });
   }
