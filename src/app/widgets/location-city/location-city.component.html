@@ -1,9 +1,9 @@
-<div (click)="showCityWeather(weather?.city?.name)" class="location-city">
-  <h2>My Location</h2>
+<div (click)="showCityWeather($event, weather?.city?.name)" class="location-city">
+  <h2>
+    My Location
+    <span id="span"><i class="fa-solid fa-trash"></i></span>
+  </h2>
   <h3>{{ weather?.city?.name }}</h3>
-  <span (click)="deleteCity(weather?.city?.name)"
-    ><i class="fa-solid fa-trash"></i
-  ></span>
   <h1>{{ weather.list?.length > 0 && weather?.list[0]?.main?.temp }}º</h1>
   <h3>
     {{ weather.list?.length > 0 && weather.list[0].weather[0]?.description }}

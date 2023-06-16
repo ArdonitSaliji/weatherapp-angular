@@ -27,39 +27,32 @@ export class WeatherApiService {
       day.main.temp_max = Math.round(day.main.temp_max);
     });
     let desc = data.list[0].weather[0].description;
-    data.list[0].weather[0].description =
-      desc.charAt(0).toUpperCase() + desc.slice(1);
-    data.city.sunrise = this.datePipe.transform(
-      new Date(data.city.sunrise * 1000),
-      'h:mm'
-    );
-    data.city.sunset = this.datePipe.transform(
-      new Date(data.city.sunset * 1000),
-      'h:mm'
-    );
+    data.list[0].weather[0].description = desc.charAt(0).toUpperCase() + desc.slice(1);
+    data.city.sunrise = this.datePipe.transform(new Date(data.city.sunrise * 1000), 'h:mm');
+    data.city.sunset = this.datePipe.transform(new Date(data.city.sunset * 1000), 'h:mm');
     data.list[0].main.feels_like = Math.round(data.list[0].main.feels_like);
   }
 
+  coords: any = JSON.parse(sessionStorage.getItem('coords') || '');
+
   getUserWeather(): Observable<any> {
     return new Observable<any>((observer) => {
-      this.geoLocation.getCords().then((res: any) => {
-        this.http
-          .get<any>(
-            `https://api.openweathermap.org/data/2.5/forecast?lat=${res.latitude}&lon=${res.longitude}&appid=${environment.WEATHER_API_KEY}&units=metric`
-          )
-          .subscribe({
-            next: (res: any) => {
-              this.formatData(res);
-              observer.next(res);
-            },
-            error: (error: any) => {
-              observer.error(error);
-            },
-            complete: () => {
-              observer.complete();
-            },
-          });
-      });
+      this.http
+        .get<any>(
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${this.coords.lat}&lon=${this.coords.lon}&appid=${environment.WEATHER_API_KEY}&units=metric`
+        )
+        .subscribe({
+          next: (res: any) => {
+            this.formatData(res);
+            observer.next(res);
+          },
+          error: (error: any) => {
+            observer.error(error);
+          },
+          complete: () => {
+            observer.complete();
+          },
+        });
     });
   }
 
@@ -71,6 +64,7 @@ export class WeatherApiService {
         )
         .subscribe({
           next: (res: any) => {
+            console.log(res);
             observer.next(res);
           },
           error: (error: any) => {
@@ -86,7 +80,6 @@ export class WeatherApiService {
   getCity(data: any) {
     return this.getCityWeather(data);
   }
-
   getCityData(data: any) {
     return this.getCityWeatherData(data.lat, data.lon);
   }
@@ -160,10 +153,7 @@ export class WeatherApiService {
   getUserCities() {
     return new Observable<any>((observer) => {
       this.http
-        .get<any>(
-          `http://localhost:3000/api/user/city/get`,
-          this.httpOptionsWithToken
-        )
+        .get<any>(`http://localhost:3000/api/user/city/get`, this.httpOptionsWithToken)
         .subscribe({
           next: (res: any) => {
             observer.next(res);

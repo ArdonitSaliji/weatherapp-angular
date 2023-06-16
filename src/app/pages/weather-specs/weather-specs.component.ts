@@ -26,15 +26,11 @@ export class WeatherSpecsComponent {
     if (!this.citySelected) {
       this.getWeather();
     } else {
-      this.weatherApi
-        .getCityWeather(this.citySelected)
-        .subscribe((res: any) => {
-          this.weatherApi
-            .getCityWeatherData(res[0].lat, res[0].lon)
-            .subscribe((res: any) => {
-              this.userLocationWeather = res;
-            });
+      this.weatherApi.getCityWeather(this.citySelected).subscribe((res: any) => {
+        this.weatherApi.getCityWeatherData(res[0].lat, res[0].lon).subscribe((res: any) => {
+          this.userLocationWeather = res;
         });
+      });
     }
   }
 }

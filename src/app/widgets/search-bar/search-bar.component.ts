@@ -9,13 +9,10 @@ import { WeatherApiService } from 'src/app/services/weather-api.service';
 })
 export class SearchBarComponent {
   searchText!: any;
-  constructor(
-    private geoLocation: GetLocationService,
-    private weather: WeatherApiService
-  ) {}
   @Output() sendInput: any = new EventEmitter<any>();
 
-  onEnter() {
+  onEnter(event: any) {
     this.sendInput.emit(this.searchText);
+    event.target.value = '';
   }
 }

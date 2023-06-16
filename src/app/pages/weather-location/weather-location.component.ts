@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, map } from 'rxjs';
-import { GetLocationService } from 'src/app/services/get-location.service';
 import { WeatherApiService } from 'src/app/services/weather-api.service';
 
 @Component({
@@ -10,13 +8,12 @@ import { WeatherApiService } from 'src/app/services/weather-api.service';
   styleUrls: ['./weather-location.component.scss'],
 })
 export class WeatherLocationComponent {
-  constructor(private weatherApi: WeatherApiService, private router: Router) {}
+  constructor(private weatherApi: WeatherApiService) {}
   userLocationWeather: any = [];
 
   ngOnInit(): void {
     this.weatherApi.getUserWeather().subscribe((res: any) => {
       this.userLocationWeather.push(res);
-
       this.getCities();
     });
   }
@@ -36,18 +33,17 @@ export class WeatherLocationComponent {
 
   cityWeather(data: any) {
     this.weatherApi.getCity(data).subscribe((res: any) => {
-      this.weatherApi
-        .getCityWeatherData(res[0].lat, res[0].lon)
-        .subscribe((res: any) => {
-          this.userLocationWeather.push(res);
-          this.weatherApi.saveCity(data).subscribe((res: any) => {});
-        });
+      this.weatherApi.getCityWeatherData(res[0].lat, res[0].lon).subscribe((res: any) => {
+        this.userLocationWeather.push(res);
+        this.weatherApi.saveCity(data).subscribe((res: any) => {});
+      });
     });
   }
 
-  deleteCity(cityName: any) {
+  deleteCity({ cityName, event }: { cityName: any; event: any }) {
+    event.target.parentElement.parentElement.remove();
     this.weatherApi.deleteCity(cityName).subscribe((res) => {
-      // console.log(res)
+      console.log(res);
     });
   }
 }

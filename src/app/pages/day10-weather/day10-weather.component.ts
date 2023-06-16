@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
 import { GetLocationService } from 'src/app/services/get-location.service';
 import { WeatherApiService } from 'src/app/services/weather-api.service';
 
@@ -9,10 +8,7 @@ import { WeatherApiService } from 'src/app/services/weather-api.service';
   styleUrls: ['./day10-weather.component.scss'],
 })
 export class Day10WeatherComponent implements OnInit {
-  constructor(
-    private geoLocation: GetLocationService,
-    private weatherApi: WeatherApiService
-  ) {}
+  constructor(private weatherApi: WeatherApiService) {}
   userLocationWeather: any = [];
   days: any = [];
 
@@ -30,12 +26,7 @@ export class Day10WeatherComponent implements OnInit {
   }
 
   citySelected: any = sessionStorage.getItem('citySelected');
-  // ngOnInit(): void {
-  //   this.weatherApi.getUserWeather().subscribe((res: any) => {
-  //     this.userLocationWeather = res;
-  //     this.getDays();
-  //   });
-  // }
+
   getWeather() {
     this.weatherApi
       .getUserWeather()
@@ -50,16 +41,12 @@ export class Day10WeatherComponent implements OnInit {
     if (!this.citySelected) {
       this.getWeather();
     } else {
-      this.weatherApi
-        .getCityWeather(this.citySelected)
-        .subscribe((res: any) => {
-          this.weatherApi
-            .getCityWeatherData(res[0].lat, res[0].lon)
-            .subscribe((res: any) => {
-              this.userLocationWeather = res;
-              this.getDays();
-            });
+      this.weatherApi.getCityWeather(this.citySelected).subscribe((res: any) => {
+        this.weatherApi.getCityWeatherData(res[0].lat, res[0].lon).subscribe((res: any) => {
+          this.userLocationWeather = res;
+          this.getDays();
         });
+      });
     }
   }
 }
