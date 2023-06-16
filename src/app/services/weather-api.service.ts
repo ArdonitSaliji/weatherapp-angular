@@ -77,13 +77,6 @@ export class WeatherApiService {
     });
   }
 
-  getCity(data: any) {
-    return this.getCityWeather(data);
-  }
-  getCityData(data: any) {
-    return this.getCityWeatherData(data.lat, data.lon);
-  }
-
   getCityWeatherData(lat: any, lon: any) {
     return new Observable<any>((observer) => {
       this.http
@@ -116,7 +109,7 @@ export class WeatherApiService {
 
   saveCity(cityName: any) {
     return new Observable<any>((observer) => {
-      this.getCity(cityName).subscribe((res: any) => {
+      this.getCityWeather(cityName).subscribe((res: any) => {
         return new Observable<any>((observer) => {
           this.http
             .post<any>(

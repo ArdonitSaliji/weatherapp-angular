@@ -22,8 +22,8 @@ export class WeatherLocationComponent {
     this.weatherApi.getUserCities().subscribe((res: any) => {
       res.body?.cities &&
         res.body?.cities?.map((city: any) => {
-          this.weatherApi.getCity(city.cityName).subscribe((res: any) => {
-            this.weatherApi.getCityData(res[0]).subscribe((res: any) => {
+          this.weatherApi.getCityWeather(city.cityName).subscribe((res: any) => {
+            this.weatherApi.getCityWeatherData(res[0].lat, res[0].lon).subscribe((res: any) => {
               this.userLocationWeather = [...this.userLocationWeather, res];
             });
           });
@@ -32,7 +32,7 @@ export class WeatherLocationComponent {
   }
 
   cityWeather(data: any) {
-    this.weatherApi.getCity(data).subscribe((res: any) => {
+    this.weatherApi.getCityWeather(data).subscribe((res: any) => {
       this.weatherApi.getCityWeatherData(res[0].lat, res[0].lon).subscribe((res: any) => {
         this.userLocationWeather.push(res);
         this.weatherApi.saveCity(data).subscribe((res: any) => {});
