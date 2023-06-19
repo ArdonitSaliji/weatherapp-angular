@@ -8,22 +8,24 @@ $cardBg: rgba(45, 51, 64, 1);
 // Font
 @font-face {
   font-family: "sf-pro-display";
-  src: url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF")
-      format("otf"),
-    url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF") format("otf"),
+  src: url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.OTF")
+      format("opentype"),
+    url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF")
+      format("opentype"),
+    url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF")
+      format("opentype"),
     url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYHEAVYITALIC.OTF")
-      format("otf"),
+      format("opentype"),
     url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYLIGHTITALIC.OTF")
-      format("otf"),
-    url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.OTF") format("otf"),
+      format("opentype"),
     url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYREGULAR.OTF")
-      format("otf"),
+      format("opentype"),
     url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYSEMIBOLDITALIC.OTF")
-      format("otf"),
+      format("opentype"),
     url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYTHINITALIC.OTF")
-      format("otf"),
+      format("opentype"),
     url("assets/sf-pro-display-cufonfonts/SFPRODISPLAYULTRALIGHTITALIC.OTF")
-      format("otf");
+      format("opentype");
 }
 * {
   margin: 0;

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GetLocationService } from 'src/app/services/get-location.service';
 import { WeatherApiService } from 'src/app/services/weather-api.service';
 
 @Component({
@@ -41,12 +40,16 @@ export class Day10WeatherComponent implements OnInit {
     if (!this.citySelected) {
       this.getWeather();
     } else {
-      this.weatherApi.getCityWeather(this.citySelected).subscribe((res: any) => {
-        this.weatherApi.getCityWeatherData(res[0].lat, res[0].lon).subscribe((res: any) => {
-          this.userLocationWeather = res;
-          this.getDays();
+      this.weatherApi
+        .getCityWeather(this.citySelected)
+        .subscribe((res: any) => {
+          this.weatherApi
+            .getCityWeatherData(res[0].lat, res[0].lon)
+            .subscribe((res: any) => {
+              this.userLocationWeather = res;
+              this.getDays();
+            });
         });
-      });
     }
   }
 }

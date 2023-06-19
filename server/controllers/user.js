@@ -29,6 +29,7 @@ export const getCities = async (req, res) => {
   try {
     let user = await User.findOne({ email: req.user.token });
     let cities = await City.find({ userId: user._id });
+    console.log(user);
 
     if (user) {
       if (cities.length > 0) {

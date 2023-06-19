@@ -13,7 +13,6 @@ import { CookieService } from 'ngx-cookie-service';
 export class WeatherApiService {
   constructor(
     private http: HttpClient,
-    private geoLocation: GetLocationService,
     private datePipe: DatePipe,
     private cookieService: CookieService
   ) {}
@@ -24,12 +23,19 @@ export class WeatherApiService {
     data.list.map((day: any) => {
       day.main.temp = Math.round(day.main.temp);
       day.main.temp_min = Math.round(day.main.temp_min);
-      day.main.temp_max = Math.round(day.main.temp_max);
+      day.main.temp_max = Math.round(day.main.temp_max) + 1;
     });
     let desc = data.list[0].weather[0].description;
-    data.list[0].weather[0].description = desc.charAt(0).toUpperCase() + desc.slice(1);
-    data.city.sunrise = this.datePipe.transform(new Date(data.city.sunrise * 1000), 'h:mm');
-    data.city.sunset = this.datePipe.transform(new Date(data.city.sunset * 1000), 'h:mm');
+    data.list[0].weather[0].description =
+      desc.charAt(0).toUpperCase() + desc.slice(1);
+    data.city.sunrise = this.datePipe.transform(
+      new Date(data.city.sunrise * 1000),
+      'h:mm'
+    );
+    data.city.sunset = this.datePipe.transform(
+      new Date(data.city.sunset * 1000),
+      'h:mm'
+    );
     data.list[0].main.feels_like = Math.round(data.list[0].main.feels_like);
   }
 
@@ -64,7 +70,6 @@ export class WeatherApiService {
         )
         .subscribe({
           next: (res: any) => {
-            console.log(res);
             observer.next(res);
           },
           error: (error: any) => {
@@ -98,14 +103,19 @@ export class WeatherApiService {
     });
   }
 
-  userToken = this.cookieService.get('access_token');
-  httpOptionsWithToken: any = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.userToken}`,
-    }),
-    observe: 'response',
-  };
+  getUserToken() {
+    return this.cookieService.get('access_token') || null;
+  }
+
+  httpOptionsWithToken(): any {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.getUserToken()}`,
+      }),
+      observe: 'response',
+    };
+  }
 
   saveCity(cityName: any) {
     return new Observable<any>((observer) => {
@@ -115,7 +125,7 @@ export class WeatherApiService {
             .post<any>(
               `http://localhost:3000/api/user/city/save`,
               { cityName: res[0]?.name },
-              this.httpOptionsWithToken
+              this.httpOptionsWithToken()
             )
             .subscribe({
               next: (res: any) => {
@@ -146,7 +156,10 @@ export class WeatherApiService {
   getUserCities() {
     return new Observable<any>((observer) => {
       this.http
-        .get<any>(`http://localhost:3000/api/user/city/get`, this.httpOptionsWithToken)
+        .get<any>(
+          `http://localhost:3000/api/user/city/get`,
+          this.httpOptionsWithToken()
+        )
         .subscribe({
           next: (res: any) => {
             observer.next(res);
@@ -167,7 +180,7 @@ export class WeatherApiService {
         .post<any>(
           `http://localhost:3000/api/user/city/delete`,
           { cityName: cityName },
-          this.httpOptionsWithToken
+          this.httpOptionsWithToken()
         )
         .subscribe({
           next: (res: any) => {

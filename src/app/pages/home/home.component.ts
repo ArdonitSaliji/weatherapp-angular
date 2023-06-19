@@ -8,22 +8,28 @@ import { WeatherApiService } from 'src/app/services/weather-api.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
+//
 export class HomeComponent implements OnInit {
-  constructor(
-    private geoLocation: GetLocationService,
-    private weatherApi: WeatherApiService
-  ) {}
+  constructor(private weatherApi: WeatherApiService) {}
   userLocationWeather!: any;
   days: any = [];
+  city: any;
+  currentTemp: any;
+  currentCondition: any;
+  maxTemp: any;
+  minTemp: any;
+  desc: any;
 
   getDays() {
     const date = new Date();
     const options: any = { weekday: 'long' };
+
     this.days.push({
       day: 'Today',
       weather: this.userLocationWeather.list[0].main,
       cond: this.userLocationWeather.list[0].weather[0].description,
     });
+
     date.setDate(date.getDate() + 1);
     this.days.push({
       day: date.toLocaleDateString('en-US', options),
@@ -40,13 +46,21 @@ export class HomeComponent implements OnInit {
   }
 
   getWeather() {
-    this.weatherApi
-      .getUserWeather()
+    this.weatherApi.getUserWeather().subscribe((res: any) => {
+      this.userLocationWeather = res;
+      this.updateVariables();
+      this.getDays();
+    });
+  }
 
-      .subscribe((res: any) => {
-        this.userLocationWeather = res;
-        this.getDays();
-      });
+  updateVariables() {
+    this.city = this.userLocationWeather?.city.name;
+    this.currentTemp = this.userLocationWeather?.list[0]?.main.temp;
+    this.currentCondition =
+      this.userLocationWeather?.list[0]?.weather[0]?.description;
+    this.maxTemp = this.userLocationWeather?.list[0]?.main.temp_max;
+    this.minTemp = this.userLocationWeather?.list[0]?.main.temp_min;
+    this.desc = this.userLocationWeather.list[0].weather[0].description;
   }
 
   citySelected: any = sessionStorage.getItem('citySelected');
@@ -62,6 +76,7 @@ export class HomeComponent implements OnInit {
             .getCityWeatherData(res[0].lat, res[0].lon)
             .subscribe((res: any) => {
               this.userLocationWeather = res;
+              this.updateVariables();
               this.getDays();
             });
         });
