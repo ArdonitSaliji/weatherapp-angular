@@ -18,21 +18,23 @@ export class TempBarComponent implements AfterViewInit {
 
   changeBarWidth(tempMin: number, tempMax: number) {
     const minTemp = 10;
-    const maxTemp = 30;
+    const maxTemp = 40;
 
-    const totalWidth = 200; // Update this value according to your desired width
+    const totalWidth = 200;
+    const temperatureRange = maxTemp - minTemp;
 
-    const blockWidth = totalWidth / (maxTemp - minTemp);
-    const currentTempPosition = (tempMin - minTemp) * blockWidth;
-    const fillWidth = (tempMax - tempMin + 1) * blockWidth;
+    const fillPercentage = (tempMax - tempMin) / temperatureRange;
+    const fillWidth = Math.floor(totalWidth * fillPercentage);
 
-    const dAttribute = `M${currentTempPosition} 2
-    H${fillWidth - 2}
-    Q${fillWidth} 2 ${fillWidth} 4
-    V4
-    H${currentTempPosition + 2}
-    Q${currentTempPosition} 4 ${currentTempPosition} 2
-    Z`;
+    const offset = Math.floor((totalWidth - fillWidth) / 3);
+
+    const dAttribute = `
+      M${offset},0.5
+      H${offset + fillWidth}
+      V4
+      H${offset}
+      Z
+    `;
 
     this.tempBar.nativeElement.setAttribute('d', dAttribute);
   }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { WeatherApiService } from 'src/app/services/weather-api.service';
 
 @Component({
@@ -6,8 +7,9 @@ import { WeatherApiService } from 'src/app/services/weather-api.service';
   templateUrl: './weather-location.component.html',
   styleUrls: ['./weather-location.component.scss'],
 })
+//
 export class WeatherLocationComponent {
-  constructor(private weatherApi: WeatherApiService) {}
+  constructor(private weatherApi: WeatherApiService, public router: Router) {}
   userLocationWeather: any = [];
 
   ngOnInit(): void {
@@ -40,15 +42,13 @@ export class WeatherLocationComponent {
         .getCityWeatherData(res[0].lat, res[0].lon)
         .subscribe((res: any) => {
           this.userLocationWeather.push(res);
-          this.weatherApi.saveCity(data).subscribe((res: any) => {});
+          this.weatherApi.saveCity(data).subscribe();
         });
     });
   }
 
   deleteCity({ cityName, event }: { cityName: any; event: any }) {
     event.target.parentElement.parentElement.remove();
-    this.weatherApi.deleteCity(cityName).subscribe((res) => {
-      console.log(res);
-    });
+    this.weatherApi.deleteCity(cityName).subscribe();
   }
 }

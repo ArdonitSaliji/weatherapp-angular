@@ -1,14 +1,10 @@
 import {
   Component,
-  ElementRef,
   EventEmitter,
-  Host,
   HostBinding,
   HostListener,
   Input,
   Output,
-  Renderer2,
-  ViewChild,
 } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
@@ -33,7 +29,11 @@ export class NavModalComponent {
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
     const targetElement = event.target as HTMLElement;
-    if (this.showNav && !targetElement.classList.contains('modal')) {
+    if (
+      this.showNav &&
+      !targetElement.classList.contains('modal') &&
+      !targetElement.classList.contains('nav')
+    ) {
       this.closeNavModal.emit();
     }
   }

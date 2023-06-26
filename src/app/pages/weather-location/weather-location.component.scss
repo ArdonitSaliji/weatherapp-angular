@@ -6,6 +6,13 @@
   font-family: "sf-pro-display";
   overflow: auto;
 
+  .arrow {
+    font-size: 2rem;
+    cursor: pointer;
+    top: 3%;
+    position: absolute;
+  }
+
   .bars-icon {
     display: flex;
     justify-content: right;
