@@ -37,21 +37,13 @@ export class AuthService {
 
   login(loginForm: any): Observable<any> {
     return this.http
-      .post<User>(
-        'http://localhost:3000/api/login',
-        loginForm,
-        this.httpOptions
-      )
+      .post<User>('http://localhost:3000/api/login', loginForm, this.httpOptions)
       .pipe(catchError(loginForm));
   }
 
   signup(signupForm: any): Observable<any> {
     return this.http
-      .post<User>(
-        'http://localhost:3000/api/signup',
-        signupForm,
-        this.httpOptions
-      )
+      .post<User>('http://localhost:3000/api/signup', signupForm, this.httpOptions)
       .pipe(catchError(signupForm));
   }
 

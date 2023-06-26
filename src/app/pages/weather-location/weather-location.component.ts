@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Coords } from 'src/app/models/Coords';
 import { WeatherApiService } from 'src/app/services/weather-api.service';
 
 @Component({
@@ -32,21 +33,19 @@ export class WeatherLocationComponent {
     });
   }
 
-  cityWeather(data: any) {
+  cityWeather(data: string) {
     this.weatherApi.getCityWeather(data).subscribe((res: any) => {
-      this.weatherApi
-        .getCityWeatherData(res[0].lat, res[0].lon)
-        .subscribe((res2: any) => {
-          this.userLocationWeather.push(res2);
-          this.weatherApi
-            .saveCity({ lat: res[0].lat, lon: res[0].lon })
-            .subscribe();
-        });
+      this.weatherApi.getCityWeatherData(res[0].lat, res[0].lon).subscribe((res2: any) => {
+        this.userLocationWeather.push(res2);
+        this.weatherApi
+          .saveCity({ lat: Number(res[0].lat.toFixed(4)), lon: Number(res[0].lon.toFixed(4)) })
+          .subscribe();
+      });
     });
   }
 
-  deleteCity({ cityName, event }: { cityName: string; event: any }) {
+  deleteCity({ cityCoords, event }: { cityCoords: Coords; event: any }) {
     event.target.parentElement.parentElement.remove();
-    this.weatherApi.deleteCity(cityName).subscribe();
+    this.weatherApi.deleteCity(cityCoords).subscribe();
   }
 }

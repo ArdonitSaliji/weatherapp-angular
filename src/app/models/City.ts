@@ -1,5 +1,7 @@
+import { Coords } from './Coords';
+
 export interface City {
   cityId: string;
   userId: string;
-  cityName: string;
+  cityCoords: Coords;
 }

@@ -11,13 +11,13 @@ export class LocationCityComponent {
   @Output() delCity = new EventEmitter();
   constructor(private router: Router) {}
 
-  showCityWeather(event: any, name: any) {
+  showCityWeather(event: any) {
     if (event.target.id === 'span') {
       if (confirm('Are you sure')) {
-        this.delCity.emit({ cityName: this.weather.city.name, event: event });
+        this.delCity.emit({ cityCoords: this.weather.city.coord, event: event });
       }
     } else {
-      sessionStorage.setItem('citySelected', JSON.stringify(name));
+      sessionStorage.setItem('citySelected', JSON.stringify(this.weather.city.coord));
       this.router.navigateByUrl('/home');
     }
   }

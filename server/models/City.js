@@ -1,9 +1,10 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const CitySchema = new mongoose.Schema({
   userId: {
     type: String,
     required: false,
+    unique: false,
     min: 3,
     max: 50,
   },
@@ -14,5 +15,5 @@ const CitySchema = new mongoose.Schema({
   },
 });
 
-const City = mongoose.model("City", CitySchema);
+const City = mongoose.model('City', CitySchema);
 export default City;

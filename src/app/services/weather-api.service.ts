@@ -25,16 +25,9 @@ export class WeatherApiService {
       day.main.temp_max = Math.round(day.main.temp_max) + 1;
     });
     let desc = data.list[0].weather[0].description;
-    data.list[0].weather[0].description =
-      desc.charAt(0).toUpperCase() + desc.slice(1);
-    data.city.sunrise = this.datePipe.transform(
-      new Date(data.city.sunrise * 1000),
-      'h:mm'
-    );
-    data.city.sunset = this.datePipe.transform(
-      new Date(data.city.sunset * 1000),
-      'h:mm'
-    );
+    data.list[0].weather[0].description = desc.charAt(0).toUpperCase() + desc.slice(1);
+    data.city.sunrise = this.datePipe.transform(new Date(data.city.sunrise * 1000), 'h:mm');
+    data.city.sunset = this.datePipe.transform(new Date(data.city.sunset * 1000), 'h:mm');
     data.list[0].main.feels_like = Math.round(data.list[0].main.feels_like);
   }
 
@@ -69,6 +62,8 @@ export class WeatherApiService {
         )
         .subscribe({
           next: (res: any) => {
+            console.log(res);
+
             observer.next(res);
           },
           error: (error: any) => {
@@ -117,7 +112,6 @@ export class WeatherApiService {
   }
 
   saveCity(cityCoords: Coords) {
-    console.log(cityCoords);
     return new Observable<any>((observer) => {
       this.http
         .post<any>(
@@ -142,10 +136,7 @@ export class WeatherApiService {
   getUserCities() {
     return new Observable<any>((observer) => {
       this.http
-        .get<any>(
-          `http://localhost:3000/api/user/city/get`,
-          this.httpOptionsWithToken()
-        )
+        .get<any>(`http://localhost:3000/api/user/city/get`, this.httpOptionsWithToken())
         .subscribe({
           next: (res: any) => {
             observer.next(res);
@@ -160,12 +151,12 @@ export class WeatherApiService {
     });
   }
 
-  deleteCity(cityName: string) {
+  deleteCity(cityCoords: Coords) {
     return new Observable<any>((observer) => {
       this.http
         .post<any>(
           `http://localhost:3000/api/user/city/delete`,
-          { cityName: cityName },
+          { cityCoords: cityCoords },
           this.httpOptionsWithToken()
         )
         .subscribe({
