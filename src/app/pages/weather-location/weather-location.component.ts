@@ -46,6 +46,12 @@ export class WeatherLocationComponent {
 
   deleteCity({ cityCoords, event }: { cityCoords: Coords; event: any }) {
     event.target.parentElement.parentElement.remove();
+    let citySelected: Coords = JSON.parse(sessionStorage.getItem('citySelected') as any);
+
+    if (cityCoords.lat === citySelected.lat && cityCoords.lon === citySelected.lon) {
+      sessionStorage.removeItem('citySelected');
+    }
+
     this.weatherApi.deleteCity(cityCoords).subscribe();
   }
 }

@@ -10,9 +10,7 @@
 </div>
 
 <div class="weather-featured">
-  <p class="featured-desc">
-    Cloudy conditions from 1AM-9AM, with showers expected at 9AM.
-  </p>
+  <p class="featured-desc">Cloudy conditions from 1AM-9AM, with showers expected at 9AM.</p>
   <hr />
   <div class="weather-hours">
     <div class="weather-hour">
@@ -49,9 +47,6 @@
   </div>
   <hr />
   <div class="forecast-days">
-    <app-forecast-day
-      *ngFor="let day of days; let index"
-      [day]="day"
-    ></app-forecast-day>
+    <app-forecast-day *ngFor="let day of days; let index" [day]="day"></app-forecast-day>
   </div>
 </div>

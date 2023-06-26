@@ -1,9 +1,9 @@
 <div (click)="showCityWeather($event)" class="location-city">
   <h2>
-    My Location
+    {{ isMyLocation ? 'My Location' : weather?.city?.name }}
     <span id="span"><i class="fa-solid fa-trash"></i></span>
   </h2>
-  <h3>{{ weather?.city?.name }}</h3>
+  <h3>{{ isMyLocation ? weather?.city?.name : formattedTime }}</h3>
   <h1>{{ weather.list?.length > 0 && weather?.list[0]?.main?.temp }}º</h1>
   <h3>
     {{ weather.list?.length > 0 && weather.list[0].weather[0]?.description }}

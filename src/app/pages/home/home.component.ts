@@ -61,14 +61,16 @@ export class HomeComponent implements OnInit {
     this.desc = this.userLocationWeather.list[0].weather[0].description;
   }
 
-  citySelected: Coords | undefined = JSON.parse(sessionStorage.getItem('citySelected') as any);
+  get getSelectedCity() {
+    return JSON.parse(sessionStorage.getItem('citySelected') as any);
+  }
 
   ngOnInit(): void {
-    if (!this.citySelected) {
+    if (!this.getSelectedCity) {
       this.getWeather();
     } else {
       this.weatherApi
-        .getCityWeatherData(this.citySelected.lat, this.citySelected.lon)
+        .getCityWeatherData(this.getSelectedCity.lat, this.getSelectedCity.lon)
         .subscribe((res: any) => {
           this.userLocationWeather = res;
           this.updateVariables();
