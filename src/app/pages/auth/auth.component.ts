@@ -4,9 +4,12 @@ import {
   MatSnackBar,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { Coords } from 'src/app/models/Coords';
 import { AuthService } from 'src/app/services/auth.service';
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -53,6 +56,23 @@ export class AuthComponent {
         console.error(error);
       }
     );
+  }
+
+  coords: Coords | undefined = JSON.parse(
+    sessionStorage.getItem('coords') as any
+  );
+  checkLocationThenLogin() {
+    if (!this.coords) {
+      this.loginForm.reset();
+      this.snackBar.open('You need to enable location first!', 'Close', {
+        duration: 4000,
+        verticalPosition: 'top' as MatSnackBarVerticalPosition,
+        panelClass: ['red-snackbar'],
+      });
+      return;
+    }
+
+    this.login();
   }
 
   signup() {

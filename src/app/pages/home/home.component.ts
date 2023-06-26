@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { map, tap } from 'rxjs';
-import { GetLocationService } from 'src/app/services/get-location.service';
 import { WeatherApiService } from 'src/app/services/weather-api.service';
 
 @Component({
@@ -63,7 +61,9 @@ export class HomeComponent implements OnInit {
     this.desc = this.userLocationWeather.list[0].weather[0].description;
   }
 
-  citySelected: any = sessionStorage.getItem('citySelected');
+  citySelected: string | undefined = JSON.parse(
+    sessionStorage.getItem('citySelected') as any
+  );
 
   ngOnInit(): void {
     if (!this.citySelected) {

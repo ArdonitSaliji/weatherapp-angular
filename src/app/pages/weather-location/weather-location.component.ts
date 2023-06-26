@@ -21,22 +21,19 @@ export class WeatherLocationComponent {
 
   getCities() {
     this.weatherApi.getUserCities().subscribe((res: any) => {
-      res.body?.cities &&
-        res.body.cities.map((city: any) => {
+      res.body.cities.map((city: any) => {
+        this.weatherApi.getCityWeather(city.cityName).subscribe((res: any) => {
           this.weatherApi
-            .getCityWeather(city.cityName)
+            .getCityWeatherData(res[0].lat, res[0].lon)
             .subscribe((res: any) => {
-              this.weatherApi
-                .getCityWeatherData(res[0].lat, res[0].lon)
-                .subscribe((res: any) => {
-                  this.userLocationWeather.push(res);
-                });
+              this.userLocationWeather.push(res);
             });
         });
+      });
     });
   }
 
-  cityWeather(data: any) {
+  cityWeather(data: string) {
     this.weatherApi.getCityWeather(data).subscribe((res: any) => {
       this.weatherApi
         .getCityWeatherData(res[0].lat, res[0].lon)
@@ -47,7 +44,7 @@ export class WeatherLocationComponent {
     });
   }
 
-  deleteCity({ cityName, event }: { cityName: any; event: any }) {
+  deleteCity({ cityName, event }: { cityName: string; event: any }) {
     event.target.parentElement.parentElement.remove();
     this.weatherApi.deleteCity(cityName).subscribe();
   }

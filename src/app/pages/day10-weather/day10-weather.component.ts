@@ -24,16 +24,15 @@ export class Day10WeatherComponent implements OnInit {
     }
   }
 
-  citySelected: any = sessionStorage.getItem('citySelected');
+  citySelected: string | undefined = JSON.parse(
+    sessionStorage.getItem('citySelected') as any
+  );
 
   getWeather() {
-    this.weatherApi
-      .getUserWeather()
-
-      .subscribe((res: any) => {
-        this.userLocationWeather = res;
-        this.getDays();
-      });
+    this.weatherApi.getUserWeather().subscribe((res: any) => {
+      this.userLocationWeather = res;
+      this.getDays();
+    });
   }
 
   ngOnInit(): void {

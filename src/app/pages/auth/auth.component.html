@@ -16,6 +16,7 @@
           <label for="user" class="label">Email</label>
           <input
             formControlName="email"
+            placeholder="Email"
             id="username"
             type="text"
             class="input"
@@ -25,6 +26,7 @@
           <label for="pass" class="label">Password</label>
           <input
             formControlName="password"
+            placeholder="Password"
             id="pass1"
             type="password"
             class="input"
@@ -43,12 +45,12 @@
             type="submit"
             class="button"
             value="Sign In"
-            (click)="login()"
+            (click)="checkLocationThenLogin()"
           />
         </div>
         <div class="hr"></div>
         <div class="foot-lnk">
-          <a href="#forgot">Forgot Password?</a>
+          <a href="">Forgot Password?</a>
         </div>
         <div class="flex justify-center mt-5">
           <button
@@ -71,6 +73,7 @@
           <label for="user" class="label">Username</label>
           <input
             formControlName="username"
+            placeholder="Username"
             id="user"
             type="text"
             class="input"
@@ -80,6 +83,7 @@
           <label for="pass" class="label">Password</label>
           <input
             formControlName="password"
+            placeholder="Password"
             id="pass"
             type="password"
             class="input"
@@ -90,6 +94,7 @@
           <label for="pass" class="label">Repeat Password</label>
           <input
             formControlName="confirmPassword"
+            placeholder="Repeat Password"
             id="pass2"
             type="password"
             class="input"
@@ -98,7 +103,13 @@
         </div>
         <div class="group">
           <label for="email" class="label">Email Address</label>
-          <input formControlName="email" id="email" type="text" class="input" />
+          <input
+            formControlName="email"
+            placeholder="Email"
+            id="email"
+            type="text"
+            class="input"
+          />
         </div>
         <div class="group">
           <input

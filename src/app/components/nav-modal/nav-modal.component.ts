@@ -7,6 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+
 @Component({
   selector: 'app-nav-modal',
   templateUrl: './nav-modal.component.html',
@@ -29,6 +30,7 @@ export class NavModalComponent {
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
     const targetElement = event.target as HTMLElement;
+
     if (
       this.showNav &&
       !targetElement.classList.contains('modal') &&
@@ -36,6 +38,11 @@ export class NavModalComponent {
     ) {
       this.closeNavModal.emit();
     }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  onEsc(event: any) {
+    if (this.showNav && event.keyCode == 27) this.closeNavModal.emit();
   }
 
   logout() {

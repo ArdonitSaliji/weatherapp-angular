@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { GetLocationService } from 'src/app/services/get-location.service';
-import { WeatherApiService } from 'src/app/services/weather-api.service';
 
 @Component({
   selector: 'app-search-bar',

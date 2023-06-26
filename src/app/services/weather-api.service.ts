@@ -2,10 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { GetLocationService } from './get-location.service';
 import { DatePipe } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
-
+import { Coords } from '../models/Coords';
 @Injectable({
   providedIn: 'root',
 })
@@ -39,7 +38,7 @@ export class WeatherApiService {
     data.list[0].main.feels_like = Math.round(data.list[0].main.feels_like);
   }
 
-  coords: any = JSON.parse(sessionStorage.getItem('coords') || '');
+  coords: Coords = JSON.parse(sessionStorage.getItem('coords') as any);
 
   getUserWeather(): Observable<any> {
     return new Observable<any>((observer) => {
@@ -62,7 +61,7 @@ export class WeatherApiService {
     });
   }
 
-  getCityWeather(data: any): Observable<any> {
+  getCityWeather(data: string): Observable<any> {
     return new Observable<any>((observer) => {
       this.http
         .get<any>(
@@ -117,7 +116,7 @@ export class WeatherApiService {
     };
   }
 
-  saveCity(cityName: any) {
+  saveCity(cityName: string) {
     return new Observable<any>((observer) => {
       this.getCityWeather(cityName).subscribe((res: any) => {
         return new Observable<any>((observer) => {
@@ -174,7 +173,7 @@ export class WeatherApiService {
     });
   }
 
-  deleteCity(cityName: any) {
+  deleteCity(cityName: string) {
     return new Observable<any>((observer) => {
       this.http
         .post<any>(

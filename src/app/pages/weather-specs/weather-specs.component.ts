@@ -10,7 +10,9 @@ export class WeatherSpecsComponent implements OnInit {
   constructor(private weatherApi: WeatherApiService) {}
 
   userLocationWeather: any;
-  citySelected: any = sessionStorage.getItem('citySelected');
+  citySelected: string | undefined = JSON.parse(
+    sessionStorage.getItem('citySelected') as any
+  );
 
   sunrise: any;
   sunset: any;

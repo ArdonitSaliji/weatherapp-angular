@@ -35,13 +35,6 @@ export class AuthService {
     return this.cookieService.get('access_token') ? true : false;
   }
 
-  getUserId(): Observable<any> {
-    return this.http.get<any>(
-      `http://localhost:3000/api/user/id`,
-      this.httpOptionsWithToken
-    );
-  }
-
   login(loginForm: any): Observable<any> {
     return this.http
       .post<User>(

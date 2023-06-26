@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { GetLocationService } from './services/get-location.service';
+import { Coords } from './models/Coords';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,10 @@ import { GetLocationService } from './services/get-location.service';
 export class AppComponent {
   title = 'weatherapp-angular';
 
-  constructor(private router: Router, private geoLocation: GetLocationService) {}
+  constructor(
+    private router: Router,
+    private geoLocation: GetLocationService
+  ) {}
 
   showNav = false;
 
@@ -27,14 +31,18 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    let coordsStr = sessionStorage.getItem('coords');
-    let coords = coordsStr ?? null;
+    let coords: Coords | undefined = JSON.parse(
+      sessionStorage.getItem('coords') as any
+    );
 
     if (!coords) {
       this.geoLocation.getLocation().then((res: any) => {
         sessionStorage.setItem(
           'coords',
-          JSON.stringify({ lat: res.coords.latitude, lon: res.coords.longitude })
+          JSON.stringify({
+            lat: res.coords.latitude,
+            lon: res.coords.longitude,
+          })
         );
       });
     }
