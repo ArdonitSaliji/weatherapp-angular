@@ -7,11 +7,10 @@ const CitySchema = new mongoose.Schema({
     min: 3,
     max: 50,
   },
-  cityName: {
-    type: String,
+  cityCoords: {
+    type: Object,
     required: true,
-    max: 50,
-    unique: true,
+    unique: false,
   },
 });
 

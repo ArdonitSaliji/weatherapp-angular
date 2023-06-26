@@ -116,28 +116,16 @@ export class WeatherApiService {
     };
   }
 
-  saveCity(cityName: string) {
+  saveCity(cityCoords: Coords) {
+    console.log(cityCoords);
     return new Observable<any>((observer) => {
-      this.getCityWeather(cityName).subscribe((res: any) => {
-        return new Observable<any>((observer) => {
-          this.http
-            .post<any>(
-              `http://localhost:3000/api/user/city/save`,
-              { cityName: res[0]?.name },
-              this.httpOptionsWithToken()
-            )
-            .subscribe({
-              next: (res: any) => {
-                observer.next(res);
-              },
-              error: (error: any) => {
-                observer.error(error);
-              },
-              complete: () => {
-                observer.complete();
-              },
-            });
-        }).subscribe({
+      this.http
+        .post<any>(
+          `http://localhost:3000/api/user/city/save`,
+          { cityCoords: cityCoords },
+          this.httpOptionsWithToken()
+        )
+        .subscribe({
           next: (res: any) => {
             observer.next(res);
           },
@@ -148,7 +136,6 @@ export class WeatherApiService {
             observer.complete();
           },
         });
-      });
     });
   }
 

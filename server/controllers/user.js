@@ -5,10 +5,10 @@ export const registerCity = async (req, res) => {
   try {
     let user = await User.findOne({ email: req.user.token });
 
-    if (!user && !req.body.cityName) return res.status(400);
+    if (!user && !req.body.cityCoords) return res.status(400);
 
     let city = new City({
-      cityName: req.body.cityName,
+      cityCoords: req.body.cityCoords,
       userId: user._id,
     });
 
@@ -26,7 +26,6 @@ export const getCities = async (req, res) => {
     let cities = await City.find({ userId: user._id });
 
     if (!user) return res.status(403).send({ msg: "User not found" });
-
     if (cities.length > 0) return res.status(200).send({ cities: cities });
     else return res.status(204).send({ msg: "No cities found" });
     //
@@ -38,11 +37,11 @@ export const getCities = async (req, res) => {
 export const deleteCity = async (req, res) => {
   let user = await User.findOne({ email: req.user.token });
 
-  if (!user && !req.body.cityname)
+  if (!user && !req.body.cityCoords)
     return res.status(400).send({ msg: "Bad Request" });
 
   await City.deleteOne({
-    cityName: req.body.cityName,
+    cityCoords: req.body.cityCoords,
     userId: user._id,
   });
 
