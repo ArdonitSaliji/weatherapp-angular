@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Coords } from 'src/app/models/Coords';
+import { Forecast } from 'src/app/models/Forecast';
 import { WeatherApiService } from 'src/app/services/weather-api.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { WeatherApiService } from 'src/app/services/weather-api.service';
 //
 export class HomeComponent implements OnInit {
   constructor(private weatherApi: WeatherApiService) {}
-  userLocationWeather!: any;
+  userLocationWeather!: Forecast;
   days: any = [];
   city: any;
   currentTemp: any;
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit {
   }
 
   getWeather() {
-    this.weatherApi.getUserWeather().subscribe((res: any) => {
+    this.weatherApi.getUserWeather().subscribe((res: Forecast) => {
       this.userLocationWeather = res;
       this.updateVariables();
       this.getDays();
@@ -55,7 +56,8 @@ export class HomeComponent implements OnInit {
   updateVariables() {
     this.city = this.userLocationWeather?.city.name;
     this.currentTemp = this.userLocationWeather?.list[0]?.main.temp;
-    this.currentCondition = this.userLocationWeather?.list[0]?.weather[0]?.description;
+    this.currentCondition =
+      this.userLocationWeather?.list[0]?.weather[0]?.description;
     this.maxTemp = this.userLocationWeather?.list[0]?.main.temp_max;
     this.minTemp = this.userLocationWeather?.list[0]?.main.temp_min;
     this.desc = this.userLocationWeather.list[0].weather[0].description;
@@ -71,7 +73,7 @@ export class HomeComponent implements OnInit {
     } else {
       this.weatherApi
         .getCityWeatherData(this.getSelectedCity.lat, this.getSelectedCity.lon)
-        .subscribe((res: any) => {
+        .subscribe((res: Forecast) => {
           this.userLocationWeather = res;
           this.updateVariables();
           this.getDays();

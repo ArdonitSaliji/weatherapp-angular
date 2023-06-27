@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { City } from 'src/app/models/City';
+import { CityData } from 'src/app/models/CityData';
 import { Coords } from 'src/app/models/Coords';
+import { Forecast } from 'src/app/models/Forecast';
 import { WeatherApiService } from 'src/app/services/weather-api.service';
 
 @Component({
@@ -11,44 +14,53 @@ import { WeatherApiService } from 'src/app/services/weather-api.service';
 //
 export class WeatherLocationComponent {
   constructor(private weatherApi: WeatherApiService, public router: Router) {}
-  userLocationWeather: any = [];
+  userLocationWeather: Forecast[] = [];
 
   ngOnInit(): void {
-    this.weatherApi.getUserWeather().subscribe((res: any) => {
+    this.weatherApi.getUserWeather().subscribe((res: Forecast) => {
       this.userLocationWeather.push(res);
       this.getCities();
     });
   }
 
   getCities() {
-    this.weatherApi.getUserCities().subscribe((res: any) => {
-      res.body?.cities &&
-        res.body.cities.map((city: any) => {
-          this.weatherApi
-            .getCityWeatherData(city.cityCoords.lat, city.cityCoords.lon)
-            .subscribe((res: any) => {
-              this.userLocationWeather.push(res);
-            });
-        });
+    this.weatherApi.getUserCities().subscribe((res: City[] | null) => {
+      res?.map((city: City) => {
+        this.weatherApi
+          .getCityWeatherData(city.cityCoords.lat, city.cityCoords.lon)
+          .subscribe((res: Forecast) => {
+            this.userLocationWeather.push(res);
+          });
+      });
     });
   }
 
   cityWeather(data: string) {
-    this.weatherApi.getCityWeather(data).subscribe((res: any) => {
-      this.weatherApi.getCityWeatherData(res[0].lat, res[0].lon).subscribe((res2: any) => {
-        this.userLocationWeather.push(res2);
-        this.weatherApi
-          .saveCity({ lat: Number(res[0].lat.toFixed(4)), lon: Number(res[0].lon.toFixed(4)) })
-          .subscribe();
-      });
+    this.weatherApi.getCityWeather(data).subscribe((res: CityData[]) => {
+      this.weatherApi
+        .getCityWeatherData(res[0].lat, res[0].lon)
+        .subscribe((res2: Forecast) => {
+          this.userLocationWeather.push(res2);
+          this.weatherApi
+            .saveCity({
+              lat: Number(res[0].lat.toFixed(4)),
+              lon: Number(res[0].lon.toFixed(4)),
+            })
+            .subscribe();
+        });
     });
   }
 
   deleteCity({ cityCoords, event }: { cityCoords: Coords; event: any }) {
     event.target.parentElement.parentElement.remove();
-    let citySelected: Coords = JSON.parse(sessionStorage.getItem('citySelected') as any);
+    let citySelected: Coords = JSON.parse(
+      sessionStorage.getItem('citySelected') as any
+    );
 
-    if (cityCoords.lat === citySelected.lat && cityCoords.lon === citySelected.lon) {
+    if (
+      cityCoords.lat === citySelected?.lat &&
+      cityCoords.lon === citySelected?.lon
+    ) {
       sessionStorage.removeItem('citySelected');
     }
 

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError } from 'rxjs';
+import { Observable, catchError, map, tap } from 'rxjs';
 import { User } from '../models/User';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
@@ -37,15 +37,61 @@ export class AuthService {
   }
 
   login(loginForm: any): Observable<any> {
-    return this.http
-      .post<User>('http://localhost:3000/api/login', loginForm, this.httpOptions)
-      .pipe(catchError(loginForm));
+    return new Observable<{ token: string; user: User } | null>((observer) => {
+      this.http
+        .post<User>(
+          'http://localhost:3000/api/login',
+          loginForm,
+          this.httpOptions
+        )
+        .pipe(
+          map((res: any) => {
+            delete res.body.user.password;
+            return res.body;
+          }),
+          catchError(loginForm)
+        )
+        .subscribe({
+          next: (res: { token: string; user: User }) => {
+            observer.next(res);
+          },
+          error: (error: any) => {
+            observer.error(error);
+          },
+          complete: () => {
+            observer.complete();
+          },
+        });
+    });
   }
 
   signup(signupForm: any): Observable<any> {
-    return this.http
-      .post<User>('http://localhost:3000/api/signup', signupForm, this.httpOptions)
-      .pipe(catchError(signupForm));
+    return new Observable<User>((observer) => {
+      this.http
+        .post<User>(
+          'http://localhost:3000/api/signup',
+          signupForm,
+          this.httpOptions
+        )
+        .pipe(
+          map((res: any) => {
+            res.body;
+            return res.body;
+          }),
+          catchError(signupForm)
+        )
+        .subscribe({
+          next(res: User) {
+            observer.next(res);
+          },
+          error(err) {
+            console.log(err);
+          },
+          complete() {
+            console.log('Complete');
+          },
+        });
+    });
   }
 
   logout() {

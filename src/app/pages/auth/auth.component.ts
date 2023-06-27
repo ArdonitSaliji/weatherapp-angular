@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Coords } from 'src/app/models/Coords';
+import { User } from 'src/app/models/User';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -36,10 +37,10 @@ export class AuthComponent {
   });
 
   login() {
-    this.authService.login(this.loginForm.value).subscribe(
-      (response: any) => {
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (res: { token: string; user: User }) => {
         this.loginForm.reset();
-        this.cookieService.set('access_token', response.body.token);
+        this.cookieService.set('access_token', res.token);
         this.router.navigateByUrl('/home');
         this.snackBar.open('Login Successful!', 'Close', {
           duration: 3000,
@@ -47,22 +48,22 @@ export class AuthComponent {
           panelClass: ['green-snackbar'],
         });
       },
-      (error) => {
+      error: (err: any) => {
         this.snackBar.open('Invalid Credentials!', 'Close', {
           duration: 3000,
           verticalPosition: 'top' as MatSnackBarVerticalPosition,
           panelClass: ['red-snackbar'],
         });
-        console.error(error);
-      }
-    );
+        console.error(err);
+      },
+    });
   }
 
-  coords: Coords | undefined = JSON.parse(
-    sessionStorage.getItem('coords') as any
-  );
   checkLocationThenLogin() {
-    if (!this.coords) {
+    let coords: Coords | undefined = JSON.parse(
+      sessionStorage.getItem('coords') as any
+    );
+    if (!coords) {
       this.loginForm.reset();
       this.snackBar.open('You need to enable location first!', 'Close', {
         duration: 4000,
@@ -76,14 +77,18 @@ export class AuthComponent {
   }
 
   signup() {
-    this.authService.signup(this.signupForm.value).subscribe(
-      (response) => {
-        console.log(response);
+    this.authService.signup(this.signupForm.value).subscribe({
+      next: (res: User) => {
         this.signupForm.reset();
+        this.snackBar.open('Signup Successful!', 'Close', {
+          duration: 3000,
+          verticalPosition: 'top' as MatSnackBarVerticalPosition,
+          panelClass: ['green-snackbar'],
+        });
       },
-      (error) => {
-        console.error(error);
-      }
-    );
+      error: (err) => {
+        console.error(err);
+      },
+    });
   }
 }

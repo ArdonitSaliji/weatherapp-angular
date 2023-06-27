@@ -17,29 +17,39 @@ export class LocationCityComponent {
 
   formattedTime!: any;
 
-  get isMyLocation() {
-    console.log(this.weather);
+  isMyLocation!: boolean;
 
-    return (
+  chechMyLocation() {
+    this.isMyLocation =
       this.weather.city.coord.lat === this.coords.lat &&
-      this.weather.city.coord.lon === this.coords.lon
-    );
+      this.weather.city.coord.lon === this.coords.lon;
   }
 
   showCityWeather(event: any) {
     if (event.target.id === 'span') {
       if (confirm('Are you sure?')) {
-        this.delCity.emit({ cityCoords: this.weather.city.coord, event: event });
+        this.delCity.emit({
+          cityCoords: this.weather.city.coord,
+          event: event,
+        });
       }
     } else {
-      sessionStorage.setItem('citySelected', JSON.stringify(this.weather.city.coord));
+      sessionStorage.setItem(
+        'citySelected',
+        JSON.stringify(this.weather.city.coord)
+      );
       this.router.navigateByUrl('/home');
     }
   }
 
   ngOnInit() {
+    this.chechMyLocation();
+
     const timeZoneShift = this.weather?.city.timezone;
-    this.formattedTime = this.datePipe.transform(new Date(timeZoneShift * 1000), 'h:mm a');
+    this.formattedTime = this.datePipe.transform(
+      new Date(timeZoneShift * 1000),
+      'h:mm a'
+    );
     const currentTime = new Date();
     const utcTime = new Date(currentTime.getTime() + timeZoneShift * 1000);
     this.formattedTime = this.datePipe.transform(utcTime, 'h:mm a', 'UTC');
