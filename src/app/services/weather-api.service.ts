@@ -48,7 +48,7 @@ export class WeatherApiService {
     return new Observable<Forecast>((observer) => {
       this.http
         .get<Forecast>(
-          `https://api.openweathermap.org/data/2.5/forecast?cnt=10&lat=${this.coords.lat}&lon=${this.coords.lon}&appid=${environment.WEATHER_API_KEY}&units=metric`
+          `https://api.openweathermap.org/data/2.5/forecast?cnt=11&lat=${this.coords.lat}&lon=${this.coords.lon}&appid=${environment.WEATHER_API_KEY}&units=metric`
         )
         .subscribe({
           next: (res: Forecast) => {
@@ -89,7 +89,7 @@ export class WeatherApiService {
     return new Observable<Forecast>((observer) => {
       this.http
         .get<any>(
-          `https://api.openweathermap.org/data/2.5/forecast?cnt=10&lat=${lat}&lon=${lon}&appid=${environment.WEATHER_API_KEY}&units=metric`
+          `https://api.openweathermap.org/data/2.5/forecast?cnt=11&lat=${lat}&lon=${lon}&appid=${environment.WEATHER_API_KEY}&units=metric`
         )
         .subscribe({
           next: (res: any) => {
