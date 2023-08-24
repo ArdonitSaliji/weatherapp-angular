@@ -1,27 +1,18 @@
 # WeatherappAngular
 
+This is a small weather app project created with Angular, NodeJs and Firebase.
+
+# Project Setup:
+ 1. Create a MongoDb database with the name weather-app and create 2 collections, one with the name `cities` and one with the name `users`.
+ 2. Create a `.env` file on the root folder of the project, copy and paste the `.env.example` into it, remove the comments, then add your connection string at MONGO_URL also a JWT secret ( which can be any string you like ).
+
+## Node Server
+
+Run `npm run dev` to start the NodeJs server
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.4.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
