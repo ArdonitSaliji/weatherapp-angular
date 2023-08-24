@@ -1,6 +1,6 @@
 # WeatherappAngular
 
-This is a small weather app project created with Angular, NodeJs and Firebase.
+This is a small weather app project created with Angular, TailwindCSS, NodeJs and Firebase.
 
 # Project Setup:
 
