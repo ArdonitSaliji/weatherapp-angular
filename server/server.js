@@ -5,11 +5,9 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
-import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
 /* CONFIGURATIONS */
-const __filename = fileURLToPath(import.meta.url);
 dotenv.config();
 
 const app = express();
@@ -40,3 +38,5 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
   })
   .catch((error) => console.log(`${error} did not connect`));
+
+  export default app;
